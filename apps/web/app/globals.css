@@ -1,0 +1,5 @@
+@import "tailwindcss";
+@import "@workspace/ui/globals.css";
+@import "@workspace/design-system/tokens";
+
+@source "../../../packages/design-system/src/**/*.{ts,tsx}";

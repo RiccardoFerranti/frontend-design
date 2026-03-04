@@ -11,6 +11,7 @@ export default function Page() {
           <DsButton>DsButton</DsButton>
           <Button variant="outline">Outline</Button>
         </div>
+        <div className="bg-background text-foreground p-4">Token test</div>
       </div>
     </div>
   );

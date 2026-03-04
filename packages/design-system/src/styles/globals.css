@@ -1,0 +1,11 @@
+@import "../tokens/index.css";
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background: hsl(var(--ds-bg));
+  color: hsl(var(--ds-text));
+}

@@ -5,7 +5,8 @@
     "paths": {
       "@workspace/design-system/*": ["./src/*"],
       "@workspace/ui/*": ["../ui/src/*"]
-    }
+    },
+    "types": ["vitest/globals", "@testing-library/jest-dom"]
   },
   "include": ["src"],
   "exclude": ["node_modules", "dist"]

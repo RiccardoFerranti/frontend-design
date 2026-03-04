@@ -1,0 +1,58 @@
+/* EPICODE design tokens */
+
+:root {
+  --radius: 0.65rem;
+
+  /* brand */
+  --primary: #d60176;
+  --primary-foreground: #ffffff;
+
+  /* surfaces */
+  --background: #f8f9fc;
+  --foreground: #1f275a;
+
+  --card: #f3f4f7;
+  --card-foreground: #1f275a;
+
+  /* hover helpers */
+  --muted: #eef0f6;
+  --muted-foreground: #1f275a;
+
+  --secondary: #e6e8f2;
+  --secondary-foreground: #1f275a;
+
+  --border: #e5e7ef;
+
+  --sidebar: #ffffff;
+  --sidebar-foreground: #1f275a;
+  --sidebar-border: #e5e7ef;
+
+  --ring: #d60176;
+}
+
+/* dark theme (LMS screenshot style) */
+
+.dark {
+  --background: #1a2155;
+  --foreground: #ffffff;
+
+  --card: #151b47;
+  --card-foreground: #ffffff;
+
+  --muted: #1f2559;
+  --muted-foreground: #ffffff;
+
+  --secondary: #262c63;
+  --secondary-foreground: #ffffff;
+
+  --border: rgba(255, 255, 255, 0.12);
+
+  --sidebar: #151b47;
+  --sidebar-foreground: #ffffff;
+  --sidebar-border: rgba(255, 255, 255, 0.12);
+
+  --primary: #d60176;
+  --primary-foreground: #ffffff;
+
+  --ring: #d60176;
+}
