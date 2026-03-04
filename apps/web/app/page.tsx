@@ -1,4 +1,5 @@
-import { Button } from "@workspace/ui/components/button"
+import { Button } from "@workspace/ui/components/button";
+import { DsButton } from "@workspace/design-system";
 
 export default function Page() {
   return (
@@ -7,9 +8,10 @@ export default function Page() {
         <h1 className="text-2xl font-bold">Hello World</h1>
         <div className="flex gap-2">
           <Button>Button</Button>
+          <DsButton>DsButton</DsButton>
           <Button variant="outline">Outline</Button>
         </div>
       </div>
     </div>
-  )
+  );
 }
