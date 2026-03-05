@@ -3,3 +3,13 @@
 @import "@workspace/design-system/tokens";
 
 @source "../../../packages/design-system/src/**/*.{ts,tsx}";
+
+body {
+  font-family: var(--font-sans); /* Inter */
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-heading); /* Outfit */
+}

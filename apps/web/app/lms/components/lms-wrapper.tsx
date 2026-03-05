@@ -1,7 +1,6 @@
 "use client";
 
 import { ReactNode, useState } from "react";
-import { useIsMobile } from "@workspace/ui/hooks/use-mobile";
 import { LessonsPanel } from "@/app/lms/components/lessons/lessons-panel";
 import { ChatPanel } from "@/app/lms/components/comments/chat-panel";
 import { CenterHeader } from "@/app/lms/components/center-header";
@@ -12,24 +11,17 @@ type LMSWrapperProps = {
 };
 
 export function LMSWrapper({ children }: LMSWrapperProps) {
-  const isMobile = useIsMobile();
-
-  // user preference (only)
   const [lessonsUserCollapsed, setLessonsUserCollapsed] = useState(false);
   const [commentsUserCollapsed, setCommentsUserCollapsed] = useState(false);
 
-  // effective behavior responsive behavior
-  const lessonsCollapsed = isMobile || lessonsUserCollapsed;
-  const commentsCollapsed = isMobile || commentsUserCollapsed;
-
-  const gridTemplateColumns = `${lessonsCollapsed ? SIDEBAR_COLLAPSED : SIDEBAR_OPEN} minmax(0, 1fr) ${
-    commentsCollapsed ? SIDEBAR_COLLAPSED : SIDEBAR_OPEN
+  const gridTemplateColumns = `${lessonsUserCollapsed ? SIDEBAR_COLLAPSED : SIDEBAR_OPEN} minmax(0, 1fr) ${
+    commentsUserCollapsed ? SIDEBAR_COLLAPSED : SIDEBAR_OPEN
   }`;
 
   return (
     <div className="grid h-svh" style={{ gridTemplateColumns }}>
       <LessonsPanel
-        collapsed={lessonsCollapsed}
+        collapsed={lessonsUserCollapsed}
         onCollapsedChange={setLessonsUserCollapsed}
       />
 
@@ -39,7 +31,7 @@ export function LMSWrapper({ children }: LMSWrapperProps) {
       </main>
 
       <ChatPanel
-        collapsed={commentsCollapsed}
+        collapsed={commentsUserCollapsed}
         onCollapsedChange={setCommentsUserCollapsed}
       />
     </div>

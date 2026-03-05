@@ -14,6 +14,13 @@ const preview: Preview = {
       },
     },
   },
+  decorators: [
+    (Story) => (
+      <div className="min-h-screen bg-background text-foreground font-sans p-6">
+        <Story />
+      </div>
+    ),
+  ],
 };
 
 export default preview;

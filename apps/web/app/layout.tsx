@@ -1,16 +1,16 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter, Outfit } from "next/font/google";
 
 import "./globals.css";
 import { Providers } from "@/components/providers";
 
-const fontSans = Geist({
+const fontSans = Inter({
   subsets: ["latin"],
   variable: "--font-sans",
 });
 
-const fontMono = Geist_Mono({
+const fontHeading = Outfit({
   subsets: ["latin"],
-  variable: "--font-mono",
+  variable: "--font-heading",
 });
 
 export default function RootLayout({
@@ -21,7 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${fontSans.variable} ${fontMono.variable} font-sans antialiased `}
+        className={`${fontSans.variable} ${fontHeading.variable} font-sans antialiased`}
       >
         <Providers>{children}</Providers>
       </body>

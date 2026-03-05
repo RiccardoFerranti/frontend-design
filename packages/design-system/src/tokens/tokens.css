@@ -1,6 +1,12 @@
 /* EPICODE design tokens */
 
 :root {
+  /* Font stacks (loaded via Google Fonts in app/storybook; next/font in app/web) */
+  --font-sans-value: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-heading-value: "Outfit", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-sans-value);
+  --font-heading: var(--font-heading-value);
+
   --radius: 0.65rem;
 
   /* brand */
@@ -106,6 +112,10 @@
 
 @theme inline {
   --radius: var(--radius);
+
+  /* Use design tokens for font utilities so .font-sans / .font-heading use Inter / Outfit */
+  --font-sans: var(--font-sans-value);
+  --font-heading: var(--font-heading-value);
 
   --color-background: var(--background);
   --color-foreground: var(--foreground);
