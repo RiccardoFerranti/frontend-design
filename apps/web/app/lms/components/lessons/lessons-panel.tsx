@@ -45,7 +45,6 @@ export function LessonsPanel({
             </span>
           )}
         </div>
-
         <div
           className={cn(
             "min-h-0 flex-1 transition-all duration-200",
@@ -54,7 +53,7 @@ export function LessonsPanel({
               : "opacity-100 translate-x-0",
           )}
         >
-          <LmsScrollArea>
+          <LmsScrollArea className="h-full overflow-hidden">
             <LessonsTree />
           </LmsScrollArea>
         </div>
