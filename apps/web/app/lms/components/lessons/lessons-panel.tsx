@@ -8,6 +8,7 @@ import { SIDEBAR_COLLAPSED, SIDEBAR_OPEN } from "@/app/lms/components/consts";
 import { DsSidebar } from "@workspace/design-system";
 import { SidebarProvider } from "@workspace/ui/components/sidebar";
 import { LmsScrollArea } from "../lms-scroll-area";
+import { cn } from "@workspace/ui/lib/utils";
 
 type LessonsPanelProps = {
   collapsed: boolean;
@@ -45,9 +46,18 @@ export function LessonsPanel({
           )}
         </div>
 
-        <LmsScrollArea>
-          <LessonsTree />
-        </LmsScrollArea>
+        <div
+          className={cn(
+            "min-h-0 flex-1 transition-all duration-200",
+            collapsed
+              ? "opacity-0 -translate-x-2 pointer-events-none"
+              : "opacity-100 translate-x-0",
+          )}
+        >
+          <LmsScrollArea>
+            <LessonsTree />
+          </LmsScrollArea>
+        </div>
       </DsSidebar>
     </SidebarProvider>
   );
