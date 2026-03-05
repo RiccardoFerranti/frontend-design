@@ -6,3 +6,5 @@ export * from "./components/avatar";
 export * from "./components/dialog";
 export * from "./components/progress";
 export * from "./components/tooltip";
+export * from "./components/chat-input";
+export * from "./chat-bubble";
