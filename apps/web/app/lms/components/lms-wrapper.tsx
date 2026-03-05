@@ -33,7 +33,7 @@ export function LMSWrapper({ children }: LMSWrapperProps) {
         onCollapsedChange={setLessonsUserCollapsed}
       />
 
-      <main className="flex min-w-0 flex-col px-6 py-4 space-y-4">
+      <main className="flex min-w-0 flex-col px-6 py-2 space-y-4">
         <CenterHeader />
         <div className="min-h-0 flex-1 overflow-auto">{children}</div>
       </main>

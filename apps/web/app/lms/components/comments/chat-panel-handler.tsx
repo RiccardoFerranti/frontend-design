@@ -1,5 +1,6 @@
 "use client";
 
+import { DsButton } from "@workspace/design-system";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 type ChatPanelHandlerProps = {
@@ -12,19 +13,26 @@ export function ChatPanelHandler({
   onToggle,
 }: ChatPanelHandlerProps) {
   return (
-    <button
+    <DsButton
       type="button"
+      variant="ghost"
+      size="icon-sm"
       onClick={onToggle}
-      className="cursor-pointer inline-flex self-start"
       aria-label={
         collapsed ? "Expand comments panel" : "Collapse comments panel"
       }
+      className="
+        bg-transparent text-muted-foreground shadow-sm backdrop-blur -ml-1
+        hover:bg-transparent active:bg-transparent
+        focus:bg-transparent focus-visible:bg-transparent
+        focus-visible:ring-0 focus-visible:ring-transparent focus-visible:outline-none
+      "
     >
       {collapsed ? (
-        <ChevronLeft className="size-8" />
+        <ChevronLeft className="size-6" />
       ) : (
-        <ChevronRight className="size-8" />
+        <ChevronRight className="size-6" />
       )}
-    </button>
+    </DsButton>
   );
 }

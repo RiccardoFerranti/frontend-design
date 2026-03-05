@@ -19,13 +19,13 @@ export function ChatPanel({ collapsed, onCollapsedChange }: ChatPanelProps) {
       className="relative flex min-w-0 flex-col border-l border-border bg-sidebar text-sidebar-foreground transition-[width] duration-200"
     >
       {/* Header */}
-      <div className="border-b border-border bg-sidebar px-4 pt-3 pb-3 flex flex-col gap-3">
+      <div className="bg-card px-4 pt-1 pb-1 flex flex-col gap-2">
         <ChatPanelHandler
           collapsed={collapsed}
           onToggle={() => onCollapsedChange(!collapsed)}
         />
         <div className="flex items-center justify-center gap-4">
-          <div className="size-8 px-1 flex items-center justify-center">
+          <div className="size-6 px-1 flex items-center justify-center">
             <Users className="text-primary" />
           </div>
           {!collapsed && (
@@ -55,7 +55,7 @@ export function ChatPanel({ collapsed, onCollapsedChange }: ChatPanelProps) {
             <button
               type="button"
               disabled
-              className="h-9 rounded-md bg-muted px-4 text-sm font-medium text-muted-foreground opacity-60 cursor-pointer"
+              className="h-9 rounded-md px-4 text-sm font-medium text-muted-foreground cursor-pointer bg-card"
             >
               Submit
             </button>
