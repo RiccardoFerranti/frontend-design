@@ -49,7 +49,7 @@ export function ChatPanel({ collapsed, onCollapsedChange }: ChatPanelProps) {
         <div className="flex-1 p-4">
           <textarea
             placeholder="Leave a comment..."
-            className="min-h-[220px] w-full resize-none bg-transparent text-sm outline-none placeholder:text-muted-foreground rounded-lg border border-border p-3"
+            className="min-h-[220px] w-full resize-none bg-transparent text-sm outline-none placeholder:text-muted-foreground rounded-sm border border-border p-3"
           />
           <div className="mt-3 flex justify-end">
             <button

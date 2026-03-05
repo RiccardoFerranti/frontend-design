@@ -8,3 +8,5 @@ export * from "./components/progress";
 export * from "./components/tooltip";
 export * from "./components/chat-input";
 export * from "./chat-bubble";
+export * from "./components/sidebar"; 
+export * from "./components/tree-item";

@@ -13,7 +13,8 @@
     "./tokens": "./src/tokens/tokens.css"
   },
   "dependencies": {
-    "@workspace/ui": "workspace:*"
+    "@workspace/ui": "workspace:*",
+    "lucide-react": "^0.563.0"
   },
   "peerDependencies": {
     "react": "^19",
