@@ -1,7 +1,6 @@
 "use client";
 
 import * as React from "react";
-import Link from "next/link";
 import { cn } from "@workspace/ui/lib/utils";
 import { ChevronDown } from "lucide-react";
 import { DsBadge } from "@workspace/design-system";
@@ -31,8 +30,8 @@ export function DsTreeItem({
   activeId,
   defaultOpen,
 }: DsTreeItemProps) {
-  const isExpandable = node.children !== undefined; // ✅ arrow should show
-  const hasChildren = (node.children?.length ?? 0) > 0; // ✅ render only if real children exist
+  const isExpandable = node.children !== undefined; // arrow should show
+  const hasChildren = (node.children?.length ?? 0) > 0; // render only if real children exist
   const [open, setOpen] = React.useState(Boolean(defaultOpen ?? level === 0));
 
   const Icon = node.icon;
@@ -45,7 +44,7 @@ export function DsTreeItem({
   const chevronColW = 16;
   const railLeft = indentPx + chevronColW / 2;
 
-  const RowTag = node.href ? Link : "div";
+  const RowTag = node.href ? "a" : "div";
   const rowProps = node.href ? ({ href: node.href } as const) : {};
 
   return (
@@ -59,7 +58,7 @@ export function DsTreeItem({
         )}
         style={{ paddingLeft: indentPx }}
       >
-        {/* ✅ Arrow column (visible for expandable nodes, even if empty) */}
+        {/* Arrow column (visible for expandable nodes, even if empty) */}
         <div className="mr-2 flex w-4 items-center justify-center">
           {isExpandable ? (
             <button
@@ -103,7 +102,7 @@ export function DsTreeItem({
         ) : null}
       </div>
 
-      {/* ✅ Only render rails + children if there are actual children */}
+      {/* Only render rails + children if there are actual children */}
       {hasChildren && open ? (
         <div className="relative">
           <span
