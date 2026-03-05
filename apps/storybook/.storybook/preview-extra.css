@@ -1,0 +1,7 @@
+/* Design-system tokens (with @theme) must be in the same file as Tailwind
+   so status colors are available when generating bg-status-*, text-status-*, etc. */
+@import "@workspace/design-system/tokens";
+@import "tailwindcss";
+
+@source "../../../packages/design-system/src/**/*.{ts,tsx}";
+@source "../stories/**/*.{ts,tsx}";
