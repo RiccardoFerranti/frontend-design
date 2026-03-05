@@ -13,6 +13,7 @@ export type DsAvatarProps = React.ComponentPropsWithoutRef<typeof Avatar> & {
   name?: string;
   src?: string;
   online?: boolean;
+  fallback?: React.ReactNode;
 };
 
 function initials(name?: string) {
@@ -24,15 +25,22 @@ function initials(name?: string) {
 export const DsAvatar = React.forwardRef<
   React.ComponentRef<typeof Avatar>,
   DsAvatarProps
->(({ className, name, src, online, size = "default", ...props }, ref) => {
-  return (
-    <Avatar ref={ref} size={size} className={cn(className)} {...props}>
-      {src ? <AvatarImage src={src} alt={name ?? "Avatar"} /> : null}
-      <AvatarFallback>{initials(name)}</AvatarFallback>
-      {online ? <AvatarBadge aria-label="Online" /> : null}
-    </Avatar>
-  );
-});
+>(
+  (
+    { className, name, src, online, size = "default", fallback, ...props },
+    ref,
+  ) => {
+    return (
+      <Avatar ref={ref} size={size} className={cn(className)} {...props}>
+        <AvatarImage src={src} alt={name ?? "Avatar"} />
+
+        <AvatarFallback>{fallback ?? initials(name)}</AvatarFallback>
+
+        {online ? <AvatarBadge aria-label="Online" /> : null}
+      </Avatar>
+    );
+  },
+);
 
 DsAvatar.displayName = "DsAvatar";
 export default DsAvatar;
