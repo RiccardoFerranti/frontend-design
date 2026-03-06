@@ -56,6 +56,8 @@
   --ds-status-in-progress: oklch(0.68 0.12 240);
   --ds-status-locked: oklch(0.55 0 0);
   --ds-status-new: var(--primary);
+
+  --surface-elevated: #2a2d3a;
 }
 
 /* dark theme (LMS screenshot style) */
@@ -108,6 +110,8 @@
   --ds-status-in-progress: oklch(0.78 0.12 240);
   --ds-status-locked: oklch(0.7 0 0);
   --ds-status-new: var(--primary);
+
+  --surface-elevated: #e5e5e7; /* slightly darker than white for light mode */
 }
 
 @theme inline {
@@ -155,4 +159,6 @@
   --color-status-in-progress: var(--ds-status-in-progress);
   --color-status-locked: var(--ds-status-locked);
   --color-status-new: var(--ds-status-new);
+
+  --color-surface-elevated: var(--surface-elevated);
 }

@@ -38,4 +38,14 @@ describe("DsCard", () => {
     render(<DsCard footer={<div>Custom footer</div>} />);
     expect(screen.getByText("Custom footer")).toBeTruthy();
   });
+
+  it("should render custom header when header prop is provided", () => {
+    render(
+      <DsCard header={<div>Custom header</div>}>
+        <div>Custom header card body</div>
+      </DsCard>,
+    );
+    expect(screen.getByText("Custom header")).toBeTruthy();
+    expect(screen.getByText("Custom header card body")).toBeTruthy();
+  });
 });

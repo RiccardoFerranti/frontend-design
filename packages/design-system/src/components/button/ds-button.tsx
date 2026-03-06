@@ -21,12 +21,14 @@ export const DsButton = React.forwardRef<
     const fixDefaultHover =
       variant === "default" ? "hover:bg-primary/90 active:bg-primary/80" : "";
 
+    const cursor = "cursor-pointer disabled:cursor-not-allowed";
+
     return (
       <Button
         ref={ref}
         variant={variant}
         disabled={disabled || loading}
-        className={cn(fixDefaultHover, className)}
+        className={cn(cursor, fixDefaultHover, className)}
         {...props}
       >
         {loading ? "Loading..." : children}

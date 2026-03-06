@@ -4,7 +4,10 @@ import { cn } from "@workspace/ui/lib/utils";
 
 export type DsBadgeStatus = "completed" | "in-progress" | "locked" | "new";
 
-export type DsBadgeProps = React.ComponentPropsWithoutRef<typeof Badge> & {
+export type DsBadgeProps = Omit<
+  React.ComponentPropsWithoutRef<typeof Badge>,
+  "variant"
+> & {
   status?: DsBadgeStatus;
 };
 
@@ -20,17 +23,15 @@ const statusClass = {
 export const DsBadge = React.forwardRef<
   React.ComponentRef<typeof Badge>,
   DsBadgeProps
->(({ className, status, variant, ...props }, ref) => {
+>(({ className, status, ...props }, ref) => {
   return (
     <Badge
       ref={ref}
-      variant={variant}
-      className={cn("border", status ? statusClass[status] : "", className)}
+      className={cn("border", status && statusClass[status], className)}
       {...props}
     />
   );
 });
 
 DsBadge.displayName = "DsBadge";
-
 export default DsBadge;

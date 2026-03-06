@@ -27,7 +27,7 @@ export function CenterHeader() {
       {/* Right icons */}
       <div className="flex items-center gap-3">
         <DsButton
-          className="relative rounded-md p-2 hover:bg-muted cursor-pointer"
+          className="relative rounded-md p-2 hover:bg-muted"
           variant="ghost"
           size="icon-sm"
           aria-label="Notifications"
@@ -38,20 +38,19 @@ export function CenterHeader() {
           </span>
         </DsButton>
 
-        {/* Avatar (replaces User icon) */}
-        <button
-          type="button"
+        <DsButton
           aria-label="Account"
           className="rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/50"
+          variant="ghost"
+          size="icon-sm"
         >
           <DsAvatar
             name="John Doe"
-            // src optional: if it fails, fallback is used anyway
             src="https://github.com/john-doe.png"
             size="sm"
             fallback={<User className="size-4" />}
           />
-        </button>
+        </DsButton>
       </div>
     </header>
   );

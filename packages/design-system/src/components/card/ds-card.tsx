@@ -8,13 +8,19 @@ import {
   CardAction,
   CardFooter,
 } from "@workspace/ui/components/card";
+import { cn } from "@workspace/ui/lib/utils";
 
 export type DsCardProps = React.ComponentPropsWithoutRef<typeof Card> & {
-  header?: React.ReactNode;
   title?: React.ReactNode;
   description?: React.ReactNode;
   action?: React.ReactNode;
   footer?: React.ReactNode;
+
+  header?: React.ReactNode;
+
+  headerProps?: React.ComponentPropsWithoutRef<typeof CardHeader>;
+  contentProps?: React.ComponentPropsWithoutRef<typeof CardContent>;
+  footerProps?: React.ComponentPropsWithoutRef<typeof CardFooter>;
 };
 
 export const DsCard = React.forwardRef<
@@ -30,6 +36,9 @@ export const DsCard = React.forwardRef<
       action,
       footer,
       children,
+      headerProps,
+      contentProps,
+      footerProps,
       ...props
     },
     ref,
@@ -42,24 +51,35 @@ export const DsCard = React.forwardRef<
           (header ? (
             header
           ) : (
-            <CardHeader className="gap-1">
-              {action ? <CardAction>{action}</CardAction> : null}
-              {title ? <CardTitle>{title}</CardTitle> : null}
-              {description ? (
-                <CardDescription>{description}</CardDescription>
-              ) : null}
+            <CardHeader
+              {...headerProps}
+              className={cn("gap-1", headerProps?.className)}
+            >
+              {action && <CardAction>{action}</CardAction>}
+              {title && <CardTitle>{title}</CardTitle>}
+              {description && <CardDescription>{description}</CardDescription>}
             </CardHeader>
           ))}
 
-        {children ? (
-          <CardContent className="pt-0">{children}</CardContent>
-        ) : null}
+        {children && (
+          <CardContent
+            {...contentProps}
+            className={cn("pt-0", contentProps?.className)}
+          >
+            {children}
+          </CardContent>
+        )}
 
-        {footer ? <CardFooter>{footer}</CardFooter> : null}
+        {footer && (
+          <CardFooter {...footerProps} className={cn(footerProps?.className)}>
+            {footer}
+          </CardFooter>
+        )}
       </Card>
     );
   },
 );
 
 DsCard.displayName = "DsCard";
+
 export default DsCard;

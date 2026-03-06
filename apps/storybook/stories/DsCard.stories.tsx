@@ -10,6 +10,9 @@ const meta: Meta<typeof DsCard> = {
   },
   argTypes: {
     header: { control: false },
+    headerProps: { control: false },
+    contentProps: { control: false },
+    footerProps: { control: false },
     title: { control: "text" },
     description: { control: "text" },
     action: { control: false },

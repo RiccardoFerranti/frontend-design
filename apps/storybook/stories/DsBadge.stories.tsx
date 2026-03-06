@@ -27,7 +27,7 @@ export const Completed: Story = {
 
 export const InProgress: Story = {
   args: {
-    status: "completed",
+    status: "in-progress",
     children: "In progress",
   },
 };

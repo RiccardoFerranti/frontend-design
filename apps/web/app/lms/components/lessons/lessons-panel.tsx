@@ -29,7 +29,7 @@ export function LessonsPanel({
         side="left"
         collapsible="icon"
         variant="sidebar"
-        className="relative flex min-w-0 flex-col border-r border-border bg-sidebar text-sidebar-foreground transition-[width] duration-200 px-4 gap-8"
+        className="relative flex min-w-0 h-full flex-col border-r border-border bg-sidebar text-sidebar-foreground px-4 gap-8"
       >
         <LessonsPanelHandler collapsed={collapsed} />
 
