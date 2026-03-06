@@ -33,4 +33,3 @@ export const DsProgress = React.forwardRef<
 });
 
 DsProgress.displayName = "DsProgress";
-export default DsProgress;

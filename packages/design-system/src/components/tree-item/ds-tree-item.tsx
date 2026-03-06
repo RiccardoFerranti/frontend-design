@@ -22,6 +22,11 @@ export type DsTreeItemProps = {
   level?: number;
   activeId?: string;
   defaultOpen?: boolean;
+  renderLink?: (props: {
+    href: string;
+    className?: string;
+    children: React.ReactNode;
+  }) => React.ReactNode;
 };
 
 export function DsTreeItem({
@@ -29,9 +34,10 @@ export function DsTreeItem({
   level = 0,
   activeId,
   defaultOpen,
+  renderLink,
 }: DsTreeItemProps) {
-  const isExpandable = node.children !== undefined; // arrow should show
-  const hasChildren = (node.children?.length ?? 0) > 0; // render only if real children exist
+  const hasChildren = (node.children?.length ?? 0) > 0;
+  const isExpandable = node.children !== undefined;
   const [open, setOpen] = React.useState(Boolean(defaultOpen ?? level === 0));
 
   const Icon = node.icon;
@@ -44,21 +50,33 @@ export function DsTreeItem({
   const chevronColW = 16;
   const railLeft = indentPx + chevronColW / 2;
 
-  const RowTag = node.href ? "a" : "div";
-  const rowProps = node.href ? ({ href: node.href } as const) : {};
+  const labelClassName = "w-[55px] min-w-[55px] max-w-[55px] truncate";
+
+  const labelContent = node.href ? (
+    renderLink ? (
+      renderLink({
+        href: node.href,
+        className: labelClassName,
+        children: node.label,
+      })
+    ) : (
+      <a href={node.href} className={labelClassName}>
+        {node.label}
+      </a>
+    )
+  ) : (
+    <div className={labelClassName}>{node.label}</div>
+  );
 
   return (
     <div className="relative">
       <div
         className={cn(
-          "relative flex items-center rounded-md px-2 py-2 text-sm transition-colors",
-          "hover:bg-sidebar-accent/30",
-          isActive && "bg-accent text-accent-foreground",
-          isDisabled && "opacity-50 pointer-events-none",
+          "relative flex items-center text-sm",
+          isDisabled && "pointer-events-none opacity-50",
         )}
         style={{ paddingLeft: indentPx }}
       >
-        {/* Arrow column (visible for expandable nodes, even if empty) */}
         <div className="mr-2 flex w-4 items-center justify-center">
           {isExpandable ? (
             <button
@@ -72,37 +90,37 @@ export function DsTreeItem({
                 className={cn(
                   "size-4 transition-transform",
                   open && "rotate-180",
-                  !hasChildren && "opacity-60", // optional: dim if empty placeholder
+                  !hasChildren && "opacity-60",
                 )}
               />
             </button>
           ) : null}
         </div>
 
-        <div className="mr-2 flex w-5 items-center justify-center">
-          {Icon ? <Icon className="size-5 shrink-0" /> : null}
-        </div>
-
-        <RowTag
-          {...rowProps}
+        <div
           className={cn(
-            "min-w-0 flex-1 truncate",
-            node.href && "hover:underline",
+            "flex w-fit max-w-full shrink-0 items-center rounded-lg px-2 py-2 transition-colors",
+            "hover:bg-accent/40",
+            isActive && "bg-accent text-accent-foreground hover:bg-accent",
+            node.status && "min-w-[185px]",
           )}
         >
-          {node.label}
-        </RowTag>
+          <div className="mr-2 flex w-5 shrink-0 items-center justify-center">
+            {Icon ? <Icon className="size-5" /> : null}
+          </div>
 
-        {node.status ? (
-          <DsBadge status={node.status} className="ml-1 shrink-0">
-            {node.status === "in-progress"
-              ? "In progress"
-              : node.status.charAt(0).toUpperCase() + node.status.slice(1)}
-          </DsBadge>
-        ) : null}
+          {labelContent}
+
+          {node.status ? (
+            <DsBadge status={node.status} className="ml-1 shrink-0">
+              {node.status === "in-progress"
+                ? "In progress"
+                : node.status.charAt(0).toUpperCase() + node.status.slice(1)}
+            </DsBadge>
+          ) : null}
+        </div>
       </div>
 
-      {/* Only render rails + children if there are actual children */}
       {hasChildren && open ? (
         <div className="relative">
           <span
@@ -118,6 +136,7 @@ export function DsTreeItem({
                 level={level + 1}
                 activeId={activeId}
                 defaultOpen={defaultOpen}
+                renderLink={renderLink}
               />
             ))}
           </div>
@@ -126,3 +145,5 @@ export function DsTreeItem({
     </div>
   );
 }
+
+DsTreeItem.displayName = "DsTreeItem";

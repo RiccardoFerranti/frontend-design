@@ -14,6 +14,7 @@ const meta: Meta<typeof DsTreeItem> = {
     level: { control: { type: "number", min: 0, max: 5 } },
     activeId: { control: "text" },
     defaultOpen: { control: "boolean" },
+    renderLink: { control: false },
   },
   args: {
     defaultOpen: true,
@@ -126,6 +127,32 @@ export const WithLinks: Story = {
   render: (args) => (
     <div className="w-[280px] rounded-lg border border-border bg-sidebar p-2">
       <DsTreeItem {...args} />
+    </div>
+  ),
+};
+
+export const WithRenderLink: Story = {
+  args: {
+    node: treeWithLinks,
+    defaultOpen: true,
+  },
+  render: (args) => (
+    <div className="w-[280px] rounded-lg border border-border bg-sidebar p-2">
+      <DsTreeItem
+        {...args}
+        renderLink={({ href, className, children }) => (
+          <a
+            href={href}
+            className={className}
+            onClick={(e) => {
+              e.preventDefault();
+              alert(`Navigate to ${href}`);
+            }}
+          >
+            {children}
+          </a>
+        )}
+      />
     </div>
   ),
 };

@@ -37,4 +37,4 @@ export function DsTooltip({
   );
 }
 
-export default DsTooltip;
+DsTooltip.displayName = "DsTooltip";

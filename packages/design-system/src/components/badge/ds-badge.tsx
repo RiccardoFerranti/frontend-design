@@ -34,4 +34,3 @@ export const DsBadge = React.forwardRef<
 });
 
 DsBadge.displayName = "DsBadge";
-export default DsBadge;

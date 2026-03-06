@@ -56,5 +56,3 @@ export const DsInput = React.forwardRef<
 });
 
 DsInput.displayName = "DsInput";
-
-export default DsInput;

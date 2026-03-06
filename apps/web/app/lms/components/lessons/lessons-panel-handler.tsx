@@ -16,7 +16,8 @@ export function LessonsPanelHandler({ collapsed }: LessonsPanelHandlerProps) {
       size="icon-sm"
       onClick={toggleSidebar}
       aria-label={collapsed ? "Expand sidebar" : "Collapse sidebar"}
-      className="absolute -right-3 top-20 z-10 grid size-6 -translate-y-1/2 place-items-center bg-transparent text-muted-foreground shadow-sm backdrop-blur hover:bg-transparent active:bg-transparent focus-visible:ring-0"
+      className="absolute -right-3 top-20 z-10 grid size-6 -translate-y-1/2 place-items-center bg-transparent 
+      text-muted-foreground backdrop-blur hover:bg-transparent active:bg-transparent focus-visible:ring-0"
     >
       <div className="grid size-6 place-items-center rounded-full bg-background">
         {collapsed ? (

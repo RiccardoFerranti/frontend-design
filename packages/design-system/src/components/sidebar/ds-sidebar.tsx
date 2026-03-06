@@ -36,4 +36,5 @@ export const DsSidebar = ({
   );
 };
 
+DsSidebar.displayName = "DsSidebar";
 export { SidebarProvider, SidebarTrigger };

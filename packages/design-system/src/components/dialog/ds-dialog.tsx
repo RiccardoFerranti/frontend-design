@@ -64,4 +64,4 @@ export function DsDialog({
   );
 }
 
-export default DsDialog;
+DsDialog.displayName = "DsDialog";

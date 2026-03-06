@@ -1,3 +1,4 @@
+import React from "react";
 import { describe, expect, it } from "vitest";
 import { render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
@@ -24,6 +25,26 @@ describe("DsTreeItem", () => {
     const link = screen.getByRole("link", { name: "Link item" });
     expect(link).toBeTruthy();
     expect(link).toHaveAttribute("href", "/path");
+  });
+
+  it("should use renderLink when provided and node has href", () => {
+    const node: TreeNode = { id: "1", label: "Custom link", href: "/custom" };
+    const renderLink = ({
+      href,
+      children,
+    }: {
+      href: string;
+      children: React.ReactNode;
+    }) => (
+      <a href={href} data-testid="custom-link">
+        {children}
+      </a>
+    );
+    render(<DsTreeItem node={node} renderLink={renderLink} />);
+    const customLink = screen.getByTestId("custom-link");
+    expect(customLink).toBeTruthy();
+    expect(customLink).toHaveAttribute("href", "/custom");
+    expect(customLink).toHaveTextContent("Custom link");
   });
 
   it("should render status badge when status is provided", () => {

@@ -156,3 +156,5 @@ export function DsChatInput({
     </div>
   );
 }
+
+DsChatInput.displayName = "DsChatInput";

@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import DsDialog from "./ds-dialog";
+import { DsDialog } from "./ds-dialog";
 
 describe("DsDialog", () => {
   it("should open when trigger is clicked", async () => {

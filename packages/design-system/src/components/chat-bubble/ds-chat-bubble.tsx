@@ -24,4 +24,4 @@ export function DsChatBubble({ role, className, ...props }: DsChatBubbleProps) {
   );
 }
 
-export default DsChatBubble;
+DsChatBubble.displayName = "DsChatBubble";

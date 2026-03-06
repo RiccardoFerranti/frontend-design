@@ -43,4 +43,3 @@ export const DsAvatar = React.forwardRef<
 );
 
 DsAvatar.displayName = "DsAvatar";
-export default DsAvatar;

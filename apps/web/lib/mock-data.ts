@@ -22,7 +22,7 @@ export const courseTree: NavNode[] = [
     id: "welcome",
     label: "Welcome: Data Analyst",
     icon: GraduationCap,
-    children: []
+    children: [],
   },
 
   {
@@ -31,94 +31,94 @@ export const courseTree: NavNode[] = [
     icon: Box,
     children: [
       {
-        id: "intro-data",
+        id: "m0-intro-data",
         label: "Introduzione al mondo dei dati",
         icon: BookOpen,
         children: [
           {
-            id: "video",
+            id: "m0-intro-data-video",
             label: "Video",
             icon: Video,
             children: [
               {
-                id: "v1",
+                id: "m0-intro-data-video-1",
                 label: "1. Intro all'analisi dei dati (1)",
                 icon: Video,
-                href: "/lesson/v1",
-                status: "completed"
+                href: "/lms?lesson=m0-intro-data-video-1",
+                status: "completed",
               },
               {
-                id: "v2",
+                id: "m0-intro-data-video-2",
                 label: "2. Intro all'analisi dei dati (2)",
                 icon: Video,
-                href: "/lesson/v2",
-                status: "in-progress"
+                href: "/lms?lesson=m0-intro-data-video-2",
+                status: "in-progress",
               },
               {
-                id: "v3",
+                id: "m0-intro-data-video-3",
                 label: "3. Analisi dati",
                 icon: Video,
-                href: "/lesson/v3",
-                status: "new"
+                href: "/lms?lesson=m0-intro-data-video-3",
+                status: "new",
               },
               {
-                id: "v4",
+                id: "m0-intro-data-video-4",
                 label: "4. Gestione dati",
                 icon: Video,
-                href: "/lesson/v4",
-                status: "locked"
-              }
-            ]
+                href: "/lms?lesson=m0-intro-data-video-4",
+                status: "locked",
+              },
+            ],
           },
           {
-            id: "theory",
+            id: "m0-intro-data-theory",
             label: "Teoria",
             icon: FileText,
             children: [
               {
-                id: "dati-1",
+                id: "m0-intro-data-theory-dati-1",
                 label: "Dati 1",
                 icon: FileText,
-                href: "/lesson/dati-1",
-                status: "in-progress"
-              }
-            ]
-          }
-        ]
+                href: "/lms?lesson=m0-intro-data-theory-dati-1",
+                status: "in-progress",
+              },
+            ],
+          },
+        ],
       },
 
       {
-        id: "prof-figures",
+        id: "m0-prof-figures",
         label: "Figure professionali & Open Data",
         icon: BookOpen,
         status: "new",
-        children: []
+        children: [],
       },
 
       {
-        id: "business-intelligence",
+        id: "m0-business-intelligence",
         label: "Business intelligence",
         icon: BookOpen,
         status: "new",
-        children: []
+        children: [],
       },
 
       {
-        id: "excel",
+        id: "m0-excel",
         label: "Excel",
         icon: BookOpen,
         status: "new",
-        children: []
+        children: [],
       },
 
       {
-        id: "exam",
+        id: "m0-exam",
         label: "Esame finale",
         icon: BookOpen,
         status: "locked",
-        children: []
-      }
-    ]
+        children: [],
+      },
+    ],
   },
 
   {
@@ -126,7 +126,7 @@ export const courseTree: NavNode[] = [
     label: "M1. Excel: febbraio 9 - marzo 13",
     icon: Box,
     status: "new",
-    children: []
+    children: [],
   },
 
   {
@@ -134,7 +134,7 @@ export const courseTree: NavNode[] = [
     label: "M2: marzo 16 - aprile 17",
     icon: Box,
     status: "locked",
-    children: []
+    children: [],
   },
 
   {
@@ -142,7 +142,7 @@ export const courseTree: NavNode[] = [
     label: "M3. aprile 20 - maggio 22",
     icon: Box,
     status: "locked",
-    children: []
+    children: [],
   },
 
   {
@@ -150,7 +150,7 @@ export const courseTree: NavNode[] = [
     label: "M4. Google Looker Studio: maggio",
     icon: Box,
     status: "locked",
-    children: []
+    children: [],
   },
 
   {
@@ -158,13 +158,13 @@ export const courseTree: NavNode[] = [
     label: "M5. Power BI: giugno 15 - luglio 17",
     icon: Box,
     status: "locked",
-    children: []
+    children: [],
   },
 
   {
     id: "capstone",
     label: "Capstone Project & Career Training",
     icon: Box,
-    children: []
-  }
+    children: [],
+  },
 ];

@@ -81,5 +81,3 @@ export const DsCard = React.forwardRef<
 );
 
 DsCard.displayName = "DsCard";
-
-export default DsCard;
