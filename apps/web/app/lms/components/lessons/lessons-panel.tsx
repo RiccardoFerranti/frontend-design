@@ -29,7 +29,7 @@ export function LessonsPanel({
         side="left"
         collapsible="icon"
         variant="sidebar"
-        className="relative flex min-w-0 h-full flex-col border-r border-border bg-sidebar text-sidebar-foreground px-4 gap-8"
+        className="relative flexs h-full flex-col border-r border-border bg-sidebar text-sidebar-foreground px-4 gap-8"
       >
         <LessonsPanelHandler collapsed={collapsed} />
 
@@ -49,9 +49,7 @@ export function LessonsPanel({
         <div
           className={cn(
             "min-h-0 flex-1 transition-all duration-200",
-            collapsed
-              ? "opacity-0 -translate-x-2 pointer-events-none"
-              : "opacity-100 translate-x-0",
+            collapsed ? "opacity-0 pointer-events-none" : "opacity-100",
           )}
         >
           <LmsScrollArea className="h-full overflow-hidden">

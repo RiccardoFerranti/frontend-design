@@ -1,7 +1,7 @@
 import { describe, expect, it, vi } from "vitest";
-import { render, screen, within } from "@testing-library/react";
+import { render, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import DsChatInput from "./ds-chat-input";
+import { DsChatInput } from "./ds-chat-input";
 
 describe("DsChatInput", () => {
   it("should call onChange when typing", async () => {
@@ -37,5 +37,31 @@ describe("DsChatInput", () => {
       "disabled",
       true,
     );
+  });
+
+  it("should apply custom className to wrapper", () => {
+    const { container } = render(
+      <DsChatInput
+        value=""
+        onChange={() => {}}
+        onSend={() => {}}
+        className="custom-class"
+      />,
+    );
+    const wrapper = container.firstChild;
+    expect(wrapper).toHaveClass("custom-class");
+  });
+
+  it("should apply buttonProps to send button", () => {
+    const { container } = render(
+      <DsChatInput
+        value="Hello"
+        onChange={() => {}}
+        onSend={() => {}}
+        buttonProps={{ className: "custom-send-btn" }}
+      />,
+    );
+    const sendButton = within(container).getByRole("button", { name: "Send" });
+    expect(sendButton).toHaveClass("custom-send-btn");
   });
 });
