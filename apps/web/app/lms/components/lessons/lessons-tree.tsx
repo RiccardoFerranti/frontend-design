@@ -1,9 +1,9 @@
 "use client";
 
-import { courseTree } from "@/lib/mock-data";
 import { DsTreeItem } from "@workspace/design-system";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
+import { courseTree } from "@/lib/mock-data";
 
 export function LessonsTree() {
   const searchParams = useSearchParams();
@@ -13,11 +13,11 @@ export function LessonsTree() {
     <div className="flex flex-col pr-4">
       {courseTree.map((node) => (
         <DsTreeItem
+          activeId={activeId}
           key={node.id}
           node={node}
-          activeId={activeId}
           renderLink={({ href, className, children }) => (
-            <Link href={href} className={className}>
+            <Link className={className} href={href}>
               {children}
             </Link>
           )}

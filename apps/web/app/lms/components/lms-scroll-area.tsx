@@ -1,12 +1,12 @@
 "use client";
 
-import * as React from "react";
 import { ScrollArea } from "@workspace/ui/components/scroll-area";
 import { cn } from "@workspace/ui/lib/utils";
+import type { ComponentProps } from "react";
 
-type Props = React.ComponentProps<typeof ScrollArea>;
+type LmsScrollAreaProps = ComponentProps<typeof ScrollArea>;
 
-export function LmsScrollArea({ className, ...props }: Props) {
+export function LmsScrollArea({ className, ...props }: LmsScrollAreaProps) {
   return (
     <ScrollArea
       {...props}
@@ -16,7 +16,7 @@ export function LmsScrollArea({ className, ...props }: Props) {
         "[&_[data-slot=scroll-area-viewport]>div]:block!",
         // Ensure it takes full width (prevents badge/layout weirdness)
         "[&_[data-slot=scroll-area-viewport]>div]:min-w-full!",
-        className,
+        className
       )}
     />
   );

@@ -1,6 +1,6 @@
-import { describe, expect, it } from "vitest";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import { describe, expect, it } from "vitest";
 import { DsDialog } from "./ds-dialog";
 
 describe("DsDialog", () => {
@@ -8,11 +8,11 @@ describe("DsDialog", () => {
     const user = userEvent.setup();
     render(
       <DsDialog
-        trigger={<button type="button">Open</button>}
         title="Dialog title"
+        trigger={<button type="button">Open</button>}
       >
         <div>Dialog body</div>
-      </DsDialog>,
+      </DsDialog>
     );
 
     await user.click(screen.getByText("Open"));

@@ -1,5 +1,5 @@
-import { describe, expect, it } from "vitest";
 import { render, screen } from "@testing-library/react";
+import { describe, expect, it } from "vitest";
 
 import { DsCard } from "./ds-card";
 
@@ -29,7 +29,7 @@ describe("DsCard", () => {
     render(
       <DsCard>
         <div>Body</div>
-      </DsCard>,
+      </DsCard>
     );
     expect(screen.getByText("Body")).toBeTruthy();
   });
@@ -43,7 +43,7 @@ describe("DsCard", () => {
     render(
       <DsCard header={<div>Custom header</div>}>
         <div>Custom header card body</div>
-      </DsCard>,
+      </DsCard>
     );
     expect(screen.getByText("Custom header")).toBeTruthy();
     expect(screen.getByText("Custom header card body")).toBeTruthy();

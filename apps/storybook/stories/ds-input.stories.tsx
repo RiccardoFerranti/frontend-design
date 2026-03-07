@@ -40,7 +40,7 @@ export const WithHelperText: Story = {
   },
 };
 
-export const Error: Story = {
+export const ErrorState: Story = {
   args: {
     error: "This field is required",
   },
@@ -54,20 +54,20 @@ export const Disabled: Story = {
 
 export const Types: Story = {
   render: (args) => (
-    <div className="flex flex-col gap-4 w-[300px]">
-      <DsInput {...args} type="text" label="Text input" placeholder="Text" />
-      <DsInput {...args} type="email" label="Email input" placeholder="Email" />
+    <div className="flex w-[300px] flex-col gap-4">
+      <DsInput {...args} label="Text input" placeholder="Text" type="text" />
+      <DsInput {...args} label="Email input" placeholder="Email" type="email" />
       <DsInput
         {...args}
-        type="password"
         label="Password input"
         placeholder="Password"
+        type="password"
       />
       <DsInput
         {...args}
-        type="search"
         label="Search input"
         placeholder="Search..."
+        type="search"
       />
     </div>
   ),

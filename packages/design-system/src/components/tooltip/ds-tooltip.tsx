@@ -1,21 +1,21 @@
 "use client";
 
-import * as React from "react";
 import {
   Tooltip,
-  TooltipTrigger,
   TooltipContent,
   TooltipProvider,
+  TooltipTrigger,
 } from "@workspace/ui/components/tooltip";
+import type { ComponentProps, ReactNode } from "react";
 
-export type DsTooltipProps = {
-  content: React.ReactNode;
-  children: React.ReactNode;
-  side?: React.ComponentProps<typeof TooltipContent>["side"];
-  align?: React.ComponentProps<typeof TooltipContent>["align"];
-  sideOffset?: number;
+export interface DsTooltipProps {
+  align?: ComponentProps<typeof TooltipContent>["align"];
+  children: ReactNode;
+  content: ReactNode;
   delayDuration?: number;
-};
+  side?: ComponentProps<typeof TooltipContent>["side"];
+  sideOffset?: number;
+}
 
 export function DsTooltip({
   content,
@@ -29,7 +29,7 @@ export function DsTooltip({
     <TooltipProvider delayDuration={delayDuration}>
       <Tooltip>
         <TooltipTrigger asChild>{children}</TooltipTrigger>
-        <TooltipContent side={side} align={align} sideOffset={sideOffset}>
+        <TooltipContent align={align} side={side} sideOffset={sideOffset}>
           {content}
         </TooltipContent>
       </Tooltip>

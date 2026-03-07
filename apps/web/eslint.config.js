@@ -1,4 +1,3 @@
-import { nextJsConfig } from "@workspace/eslint-config/next-js"
-
 /** @type {import("eslint").Linter.Config} */
-export default nextJsConfig
+// biome-ignore lint/performance/noBarrelFile: ESLint config entry point, re-exports shared config
+export { nextJsConfig as default } from "@workspace/eslint-config/next-js";

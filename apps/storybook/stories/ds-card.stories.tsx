@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { DsCard, DsButton } from "@workspace/design-system";
+import { DsButton, DsCard } from "@workspace/design-system";
 
 const meta: Meta<typeof DsCard> = {
   title: "Design System/DsCard",
@@ -36,10 +36,10 @@ export const Default: Story = {
         {...args}
         action={<DsButton size="sm">Open</DsButton>}
         footer={
-          <span className="text-xs text-muted-foreground">30% complete</span>
+          <span className="text-muted-foreground text-xs">30% complete</span>
         }
       >
-        <p className="text-sm text-muted-foreground">
+        <p className="text-muted-foreground text-sm">
           This is the card content.
         </p>
       </DsCard>
@@ -51,17 +51,17 @@ export const CustomHeader: Story = {
   render: () => (
     <div className="w-[340px]">
       <DsCard
+        footer={
+          <span className="text-muted-foreground text-xs">Footer content</span>
+        }
         header={
-          <div className="px-4 py-3 flex items-center justify-between">
-            <span className="text-sm font-semibold">Custom header</span>
+          <div className="flex items-center justify-between px-4 py-3">
+            <span className="font-semibold text-sm">Custom header</span>
             <DsButton size="sm">CTA</DsButton>
           </div>
         }
-        footer={
-          <span className="text-xs text-muted-foreground">Footer content</span>
-        }
       >
-        <p className="text-sm text-muted-foreground">
+        <p className="text-muted-foreground text-sm">
           Card with custom header.
         </p>
       </DsCard>
@@ -73,7 +73,7 @@ export const NoHeader: Story = {
   render: () => (
     <div className="w-[340px]">
       <DsCard>
-        <p className="text-sm text-muted-foreground">Card without header.</p>
+        <p className="text-muted-foreground text-sm">Card without header.</p>
       </DsCard>
     </div>
   ),

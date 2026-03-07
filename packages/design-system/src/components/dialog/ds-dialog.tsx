@@ -1,25 +1,25 @@
 "use client";
 
-import * as React from "react";
 import {
   Dialog,
-  DialogTrigger,
+  DialogClose,
   DialogContent,
-  DialogHeader,
-  DialogTitle,
   DialogDescription,
   DialogFooter,
-  DialogClose,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
 } from "@workspace/ui/components/dialog";
 import { cn } from "@workspace/ui/lib/utils";
+import type { ComponentPropsWithoutRef, ReactNode } from "react";
 
-export type DsDialogProps = React.ComponentPropsWithoutRef<typeof Dialog> & {
-  trigger?: React.ReactNode;
-  title?: React.ReactNode;
-  description?: React.ReactNode;
-  header?: React.ReactNode;
-  footer?: React.ReactNode;
-  children?: React.ReactNode;
+export type DsDialogProps = ComponentPropsWithoutRef<typeof Dialog> & {
+  trigger?: ReactNode;
+  title?: ReactNode;
+  description?: ReactNode;
+  header?: ReactNode;
+  footer?: ReactNode;
+  children?: ReactNode;
   contentClassName?: string;
 };
 
@@ -35,23 +35,28 @@ export function DsDialog({
 }: DsDialogProps) {
   const hasHeader = Boolean(header || title || description);
 
+  let headerContent: ReactNode = null;
+  if (hasHeader) {
+    if (header) {
+      headerContent = header;
+    } else {
+      headerContent = (
+        <DialogHeader className="border-border border-b pb-3">
+          {title ? <DialogTitle>{title}</DialogTitle> : null}
+          {description ? (
+            <DialogDescription>{description}</DialogDescription>
+          ) : null}
+        </DialogHeader>
+      );
+    }
+  }
+
   return (
     <Dialog {...props}>
       {trigger ? <DialogTrigger asChild>{trigger}</DialogTrigger> : null}
 
       <DialogContent className={cn(contentClassName)}>
-        {hasHeader ? (
-          header ? (
-            header
-          ) : (
-            <DialogHeader className="border-b border-border pb-3">
-              {title ? <DialogTitle>{title}</DialogTitle> : null}
-              {description ? (
-                <DialogDescription>{description}</DialogDescription>
-              ) : null}
-            </DialogHeader>
-          )
-        ) : null}
+        {headerContent}
 
         {children}
 

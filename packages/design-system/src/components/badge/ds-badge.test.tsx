@@ -1,5 +1,5 @@
-import { describe, expect, it } from "vitest";
 import { render, screen } from "@testing-library/react";
+import { describe, expect, it } from "vitest";
 
 import { DsBadge } from "./ds-badge";
 
@@ -47,7 +47,7 @@ describe("DsBadge", () => {
     render(
       <DsBadge asChild>
         <a href="/test">Link</a>
-      </DsBadge>,
+      </DsBadge>
     );
 
     const link = screen.getByRole("link", { name: "Link" });

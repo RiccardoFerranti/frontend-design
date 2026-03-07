@@ -1,5 +1,5 @@
-import { describe, expect, it, vi } from "vitest";
 import { render, screen } from "@testing-library/react";
+import { describe, expect, it, vi } from "vitest";
 
 import { DsSidebar, SidebarProvider } from "./ds-sidebar";
 
@@ -12,7 +12,7 @@ vi.stubGlobal(
     addEventListener: vi.fn(),
     removeEventListener: vi.fn(),
     dispatchEvent: vi.fn(),
-  })),
+  }))
 );
 
 describe("DsSidebar", () => {
@@ -20,7 +20,7 @@ describe("DsSidebar", () => {
     render(
       <SidebarProvider>
         <DsSidebar />
-      </SidebarProvider>,
+      </SidebarProvider>
     );
     expect(true).toBe(true);
   });
@@ -29,7 +29,7 @@ describe("DsSidebar", () => {
     render(
       <SidebarProvider>
         <DsSidebar title="My title" />
-      </SidebarProvider>,
+      </SidebarProvider>
     );
     expect(screen.getByText("My title")).toBeTruthy();
   });
@@ -38,7 +38,7 @@ describe("DsSidebar", () => {
     render(
       <SidebarProvider>
         <DsSidebar footer={<div>Custom footer</div>} />
-      </SidebarProvider>,
+      </SidebarProvider>
     );
     expect(screen.getByText("Custom footer")).toBeTruthy();
   });
@@ -49,7 +49,7 @@ describe("DsSidebar", () => {
         <DsSidebar>
           <div>Sidebar body</div>
         </DsSidebar>
-      </SidebarProvider>,
+      </SidebarProvider>
     );
     expect(screen.getByText("Sidebar body")).toBeTruthy();
   });

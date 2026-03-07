@@ -1,5 +1,5 @@
-import { describe, expect, it } from "vitest";
 import { render, screen } from "@testing-library/react";
+import { describe, expect, it } from "vitest";
 import { DsTooltip } from "./ds-tooltip";
 
 describe("DsTooltip", () => {
@@ -7,7 +7,7 @@ describe("DsTooltip", () => {
     render(
       <DsTooltip content="Hello">
         <button type="button">Hover</button>
-      </DsTooltip>,
+      </DsTooltip>
     );
     expect(screen.getByRole("button", { name: "Hover" })).toBeTruthy();
   });

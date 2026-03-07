@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { DsTreeItem } from "@workspace/design-system";
 import type { TreeNode } from "@workspace/design-system";
+import { DsTreeItem } from "@workspace/design-system";
 
 const meta: Meta<typeof DsTreeItem> = {
   title: "Design System/DsTreeItem",
@@ -142,11 +142,11 @@ export const WithRenderLink: Story = {
         {...args}
         renderLink={({ href, className, children }) => (
           <a
-            href={href}
             className={className}
+            href={href}
             onClick={(e) => {
               e.preventDefault();
-              alert(`Navigate to ${href}`);
+              console.log("Navigate to", href);
             }}
           >
             {children}

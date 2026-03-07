@@ -1,18 +1,16 @@
-import * as React from "react";
 import { Button } from "@workspace/ui/components/button";
 import { cn } from "@workspace/ui/lib/utils";
+import type { ComponentPropsWithoutRef, ComponentRef } from "react";
+import { forwardRef } from "react";
 
-export type DsButtonProps = React.ComponentPropsWithoutRef<typeof Button> & {
+export type DsButtonProps = ComponentPropsWithoutRef<typeof Button> & {
   loading?: boolean;
 };
 
-export const DsButton = React.forwardRef<
-  React.ComponentRef<typeof Button>,
-  DsButtonProps
->(
+export const DsButton = forwardRef<ComponentRef<typeof Button>, DsButtonProps>(
   (
     { loading, disabled, className, variant = "default", children, ...props },
-    ref,
+    ref
   ) => {
     // The primitive Button in `@workspace/ui` has a hover rule written as `[a]:hover:bg-primary/80`, which only applies
     // when an <a> is inside the button.
@@ -25,16 +23,16 @@ export const DsButton = React.forwardRef<
 
     return (
       <Button
+        className={cn(cursor, fixDefaultHover, className)}
+        disabled={disabled || loading}
         ref={ref}
         variant={variant}
-        disabled={disabled || loading}
-        className={cn(cursor, fixDefaultHover, className)}
         {...props}
       >
         {loading ? "Loading..." : children}
       </Button>
     );
-  },
+  }
 );
 
 DsButton.displayName = "DsButton";

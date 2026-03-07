@@ -1,4 +1,4 @@
-import { DsProgress, DsBadge } from "@workspace/design-system";
+import { DsBadge, DsProgress } from "@workspace/design-system";
 
 import { LessonContentBreadcrumb } from "./lesson-content-breadcrumb";
 
@@ -9,11 +9,11 @@ export function LessonContentHeader() {
       <LessonContentBreadcrumb />
 
       {/* Title */}
-      <h1 className="text-2xl font-semibold">Dati 1</h1>
+      <h1 className="font-semibold text-2xl">Dati 1</h1>
 
       {/* Progress */}
       <div className="flex items-center gap-4">
-        <DsProgress value={32} className="w-[220px]" />
+        <DsProgress className="w-[220px]" value={32} />
         <DsBadge status="in-progress">In Progress</DsBadge>
       </div>
     </div>

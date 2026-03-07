@@ -5,10 +5,10 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 
 export function LessonContentNav() {
   return (
-    <div className="bg-surface-elevated px-6 py-4 flex items-center justify-between z-10">
+    <div className="z-10 flex items-center justify-between bg-surface-elevated px-6 py-4">
       <DsButton
-        variant="outline"
         className="flex items-center gap-2 border-none"
+        variant="outline"
       >
         <ChevronLeft className="size-4" />
         Previous Lesson

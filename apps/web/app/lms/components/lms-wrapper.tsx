@@ -1,17 +1,16 @@
 "use client";
 
-import { ReactNode, useState } from "react";
-import { LessonsPanel } from "@/app/lms/components/lessons/lessons-panel";
-import { ChatPanel } from "@/app/lms/components/comments/chat-panel";
-import { CenterHeader } from "@/app/lms/components/center-header";
-
-import { SIDEBAR_COLLAPSED, SIDEBAR_OPEN } from "./consts";
 import { useIsMobile } from "@workspace/ui/hooks/use-mobile";
+import { type ReactNode, useState } from "react";
+import { CenterHeader } from "@/app/lms/components/center-header";
+import { ChatPanel } from "@/app/lms/components/comments/chat-panel";
+import { LessonsPanel } from "@/app/lms/components/lessons/lessons-panel";
+import { SIDEBAR_COLLAPSED, SIDEBAR_OPEN } from "./consts";
 import { LmsScrollArea } from "./lms-scroll-area";
 
-type LMSWrapperProps = {
+interface LMSWrapperProps {
   children: ReactNode;
-};
+}
 
 export function LMSWrapper({ children }: LMSWrapperProps) {
   const isMobile = useIsMobile(); // <768: hide both sidebars
@@ -43,7 +42,7 @@ export function LMSWrapper({ children }: LMSWrapperProps) {
         />
       )}
 
-      <main className="flex min-w-0 flex-col px-6 py-2 space-y-4">
+      <main className="flex min-w-0 flex-col space-y-4 px-6 py-2">
         <CenterHeader />
         <LmsScrollArea className="h-full overflow-hidden">
           <div className="min-h-0 flex-1 overflow-auto">{children}</div>

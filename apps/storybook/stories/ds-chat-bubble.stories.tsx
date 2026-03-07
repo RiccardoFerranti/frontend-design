@@ -6,10 +6,10 @@ const meta: Meta<typeof DsChatBubble> = {
   component: DsChatBubble,
   tags: ["autodocs"],
   argTypes: {
-    role: { control: "select", options: ["user", "assistant"] },
+    sender: { control: "select", options: ["user", "assistant"] },
     children: { control: "text" },
   },
-  args: { role: "assistant", children: "Assistant message" },
+  args: { sender: "assistant", children: "Assistant message" },
 };
 
 export default meta;
@@ -19,10 +19,10 @@ export const Default: Story = {};
 
 export const Conversation: Story = {
   render: () => (
-    <div className="grid gap-3 max-w-lg">
-      <DsChatBubble role="assistant">Hi! How can I help?</DsChatBubble>
-      <DsChatBubble role="user">Show me my lessons</DsChatBubble>
-      <DsChatBubble role="assistant">
+    <div className="grid max-w-lg gap-3">
+      <DsChatBubble sender="assistant">Hi! How can I help?</DsChatBubble>
+      <DsChatBubble sender="user">Show me my lessons</DsChatBubble>
+      <DsChatBubble sender="assistant">
         Sure — loading your dashboard…
       </DsChatBubble>
     </div>

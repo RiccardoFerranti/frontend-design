@@ -2,9 +2,12 @@
 /** @type {import("eslint").Linter.Config} */
 module.exports = {
   ignorePatterns: ["apps/**", "packages/**"],
-  extends: ["@workspace/eslint-config/library.js", "plugin:storybook/recommended"],
+  extends: [
+    "@workspace/eslint-config/library.js",
+    "plugin:storybook/recommended",
+  ],
   parser: "@typescript-eslint/parser",
   parserOptions: {
     project: true,
   },
-}
+};

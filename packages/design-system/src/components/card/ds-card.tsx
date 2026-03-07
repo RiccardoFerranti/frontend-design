@@ -1,32 +1,28 @@
-import * as React from "react";
 import {
   Card,
+  CardAction,
+  CardContent,
+  CardDescription,
+  CardFooter,
   CardHeader,
   CardTitle,
-  CardDescription,
-  CardContent,
-  CardAction,
-  CardFooter,
 } from "@workspace/ui/components/card";
 import { cn } from "@workspace/ui/lib/utils";
+import type { ComponentPropsWithoutRef, ComponentRef, ReactNode } from "react";
+import { forwardRef } from "react";
 
-export type DsCardProps = React.ComponentPropsWithoutRef<typeof Card> & {
-  title?: React.ReactNode;
-  description?: React.ReactNode;
-  action?: React.ReactNode;
-  footer?: React.ReactNode;
-
-  header?: React.ReactNode;
-
-  headerProps?: React.ComponentPropsWithoutRef<typeof CardHeader>;
-  contentProps?: React.ComponentPropsWithoutRef<typeof CardContent>;
-  footerProps?: React.ComponentPropsWithoutRef<typeof CardFooter>;
+export type DsCardProps = ComponentPropsWithoutRef<typeof Card> & {
+  title?: ReactNode;
+  description?: ReactNode;
+  action?: ReactNode;
+  footer?: ReactNode;
+  header?: ReactNode;
+  headerProps?: ComponentPropsWithoutRef<typeof CardHeader>;
+  contentProps?: ComponentPropsWithoutRef<typeof CardContent>;
+  footerProps?: ComponentPropsWithoutRef<typeof CardFooter>;
 };
 
-export const DsCard = React.forwardRef<
-  React.ComponentRef<typeof Card>,
-  DsCardProps
->(
+export const DsCard = forwardRef<ComponentRef<typeof Card>, DsCardProps>(
   (
     {
       className,
@@ -41,12 +37,12 @@ export const DsCard = React.forwardRef<
       footerProps,
       ...props
     },
-    ref,
+    ref
   ) => {
     const hasHeader = Boolean(header || title || description || action);
 
     return (
-      <Card ref={ref} className={className} {...props}>
+      <Card className={className} ref={ref} {...props}>
         {hasHeader &&
           (header ? (
             header
@@ -77,7 +73,7 @@ export const DsCard = React.forwardRef<
         )}
       </Card>
     );
-  },
+  }
 );
 
 DsCard.displayName = "DsCard";

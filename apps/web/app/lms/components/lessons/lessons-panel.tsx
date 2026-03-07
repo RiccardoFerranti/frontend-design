@@ -1,17 +1,17 @@
 "use client";
 
+import { DsSidebar, SidebarProvider } from "@workspace/design-system";
+import { cn } from "@workspace/ui/lib/utils";
 import Image from "next/image";
+import { SIDEBAR_COLLAPSED, SIDEBAR_OPEN } from "@/app/lms/components/consts";
 import { LessonsPanelHandler } from "@/app/lms/components/lessons/lessons-panel-handler";
 import { LessonsTree } from "@/app/lms/components/lessons/lessons-tree";
 import { LmsScrollArea } from "../lms-scroll-area";
-import { cn } from "@workspace/ui/lib/utils";
-import { SIDEBAR_COLLAPSED, SIDEBAR_OPEN } from "@/app/lms/components/consts";
-import { DsSidebar, SidebarProvider } from "@workspace/design-system";
 
-type LessonsPanelProps = {
+interface LessonsPanelProps {
   collapsed: boolean;
   onCollapsedChange: (v: boolean) => void;
-};
+}
 
 export function LessonsPanel({
   collapsed,
@@ -21,27 +21,27 @@ export function LessonsPanel({
 
   return (
     <SidebarProvider
-      open={!collapsed}
       onOpenChange={(open) => onCollapsedChange(!open)}
+      open={!collapsed}
     >
       <DsSidebar
-        style={{ width }}
-        side="left"
+        className="flexs relative h-full flex-col gap-8 border-border border-r bg-sidebar px-4 text-sidebar-foreground"
         collapsible="icon"
+        side="left"
+        style={{ width }}
         variant="sidebar"
-        className="relative flexs h-full flex-col border-r border-border bg-sidebar text-sidebar-foreground px-4 gap-8"
       >
         <LessonsPanelHandler collapsed={collapsed} />
 
-        <div className="bg-sidebar py-6 flex items-center gap-3">
+        <div className="flex items-center gap-3 bg-sidebar py-6">
           <Image
-            src="/assets/logos/epicode-logo.png"
             alt="Epicode"
-            width={24}
             height={24}
+            src="/assets/logos/epicode-logo.png"
+            width={24}
           />
           {!collapsed && (
-            <span className="truncate text-sm font-semibold">
+            <span className="truncate font-semibold text-sm">
               Data Analytics &amp; AI
             </span>
           )}
@@ -49,7 +49,7 @@ export function LessonsPanel({
         <div
           className={cn(
             "min-h-0 flex-1 transition-all duration-200",
-            collapsed ? "opacity-0 pointer-events-none" : "opacity-100",
+            collapsed ? "pointer-events-none opacity-0" : "opacity-100"
           )}
         >
           <LmsScrollArea className="h-full overflow-hidden">

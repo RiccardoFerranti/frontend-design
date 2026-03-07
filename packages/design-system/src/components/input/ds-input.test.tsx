@@ -1,6 +1,5 @@
-import * as React from "react";
-import { describe, expect, it } from "vitest";
 import { fireEvent, render, screen, within } from "@testing-library/react";
+import { describe, expect, it } from "vitest";
 
 import { DsInput } from "./ds-input";
 
@@ -22,7 +21,7 @@ describe("DsInput", () => {
 
   it("should show error text and set aria-invalid", () => {
     const { container } = render(
-      <DsInput placeholder="Email" error="Required" />,
+      <DsInput error="Required" placeholder="Email" />
     );
 
     const scope = within(container);

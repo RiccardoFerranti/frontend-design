@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import React from "react";
 import { DsBadge } from "@workspace/design-system";
+import React from "react";
 
 const meta: Meta<typeof DsBadge> = {
   title: "Design System/DsBadge",
@@ -49,7 +49,7 @@ export const New: Story = {
 export const AllStatuses: Story = {
   args: {},
   render: () => (
-    <div className="flex gap-3 flex-wrap">
+    <div className="flex flex-wrap gap-3">
       <DsBadge status="completed">Completed</DsBadge>
       <DsBadge status="in-progress">In progress</DsBadge>
       <DsBadge status="locked">Locked</DsBadge>

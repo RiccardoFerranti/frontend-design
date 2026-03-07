@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { DsDialog } from "@workspace/design-system";
-import { DsButton } from "@workspace/design-system";
+import { DsButton, DsDialog } from "@workspace/design-system";
 
 const meta: Meta<typeof DsDialog> = {
   title: "Design System/DsDialog",
@@ -27,10 +26,10 @@ export const Default: Story = {
   render: (args) => (
     <DsDialog
       {...args}
-      trigger={<DsButton>Open dialog</DsButton>}
       footer={<DsButton variant="destructive">Confirm</DsButton>}
+      trigger={<DsButton>Open dialog</DsButton>}
     >
-      <div className="text-sm text-muted-foreground">
+      <div className="text-muted-foreground text-sm">
         Example content inside the dialog.
       </div>
     </DsDialog>

@@ -1,5 +1,5 @@
-import { describe, expect, it } from "vitest";
 import { render, screen, within } from "@testing-library/react";
+import { describe, expect, it } from "vitest";
 import { DsProgress } from "./ds-progress";
 
 describe("DsProgress", () => {
@@ -14,7 +14,7 @@ describe("DsProgress", () => {
   });
 
   it("should hide percentage when showValue is false", () => {
-    const { container } = render(<DsProgress value={42} showValue={false} />);
+    const { container } = render(<DsProgress showValue={false} value={42} />);
     const scope = within(container);
     expect(scope.queryByText("42%")).toBeNull();
   });

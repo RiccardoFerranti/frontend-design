@@ -1,11 +1,12 @@
-import * as React from "react";
 import { Badge } from "@workspace/ui/components/badge";
 import { cn } from "@workspace/ui/lib/utils";
+import type { ComponentPropsWithoutRef, ComponentRef } from "react";
+import { forwardRef } from "react";
 
 export type DsBadgeStatus = "completed" | "in-progress" | "locked" | "new";
 
 export type DsBadgeProps = Omit<
-  React.ComponentPropsWithoutRef<typeof Badge>,
+  ComponentPropsWithoutRef<typeof Badge>,
   "variant"
 > & {
   status?: DsBadgeStatus;
@@ -20,17 +21,16 @@ const statusClass = {
   new: "bg-status-new/15 text-status-new border-status-new/20",
 } as const satisfies Record<DsBadgeStatus, string>;
 
-export const DsBadge = React.forwardRef<
-  React.ComponentRef<typeof Badge>,
-  DsBadgeProps
->(({ className, status, ...props }, ref) => {
-  return (
-    <Badge
-      ref={ref}
-      className={cn("border", status && statusClass[status], className)}
-      {...props}
-    />
-  );
-});
+export const DsBadge = forwardRef<ComponentRef<typeof Badge>, DsBadgeProps>(
+  ({ className, status, ...props }, ref) => {
+    return (
+      <Badge
+        className={cn("border", status && statusClass[status], className)}
+        ref={ref}
+        {...props}
+      />
+    );
+  }
+);
 
 DsBadge.displayName = "DsBadge";

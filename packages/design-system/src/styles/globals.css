@@ -6,6 +6,6 @@ body {
 }
 
 body {
-  background: hsl(var(--ds-bg));
   color: hsl(var(--ds-text));
+  background: hsl(var(--ds-bg));
 }

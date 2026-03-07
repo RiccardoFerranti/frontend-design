@@ -8,6 +8,5 @@ vi.stubGlobal(
     observe = vi.fn();
     unobserve = vi.fn();
     disconnect = vi.fn();
-    constructor(_callback: ResizeObserverCallback) {}
-  },
+  }
 );

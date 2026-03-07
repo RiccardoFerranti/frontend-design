@@ -1,21 +1,16 @@
-import {
-  BookOpen,
-  Box,
-  GraduationCap,
-  Video,
-  FileText,
-} from "lucide-react";
+import { BookOpen, Box, FileText, GraduationCap, Video } from "lucide-react";
+import type { ComponentType } from "react";
 
 export type NodeStatus = "completed" | "in-progress" | "locked" | "new";
 
-export type NavNode = {
+export interface NavNode {
+  children?: NavNode[];
+  href?: string;
+  icon?: ComponentType<{ className?: string }>;
   id: string;
   label: string;
-  icon?: React.ComponentType<{ className?: string }>;
-  href?: string;
   status?: NodeStatus;
-  children?: NavNode[];
-};
+}
 
 export const courseTree: NavNode[] = [
   {

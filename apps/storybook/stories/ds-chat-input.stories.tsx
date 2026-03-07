@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { DsChatInput } from "@workspace/design-system";
-import { useState, type ReactNode } from "react";
+import { type ReactNode, useState } from "react";
 
 const meta: Meta<typeof DsChatInput> = {
   title: "Design System/DsChatInput",
@@ -22,7 +22,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 const Wrapper = ({ children }: { children: ReactNode }) => (
-  <div className="max-w-lg border border-border rounded-xl overflow-hidden">
+  <div className="max-w-lg overflow-hidden rounded-xl border border-border">
     {children}
   </div>
 );
@@ -33,9 +33,9 @@ export const Default: Story = {
     return (
       <Wrapper>
         <DsChatInput
-          value={value}
           onChange={setValue}
-          onSend={() => alert(`Send: ${value}`)}
+          onSend={() => console.log("Send:", value)}
+          value={value}
         />
       </Wrapper>
     );
@@ -49,14 +49,16 @@ export const WithAttachment: Story = {
     return (
       <Wrapper>
         <DsChatInput
-          value={value}
+          onAttach={setAttachment}
           onChange={setValue}
           onSend={() =>
-            alert(
-              `Send: ${value}${attachment ? ` with ${attachment.name}` : ""}`,
+            console.log(
+              "Send:",
+              value,
+              attachment ? `with ${attachment.name}` : ""
             )
           }
-          onAttach={setAttachment}
+          value={value}
         />
       </Wrapper>
     );
@@ -66,7 +68,16 @@ export const WithAttachment: Story = {
 export const Disabled: Story = {
   render: () => (
     <Wrapper>
-      <DsChatInput value="" onChange={() => {}} onSend={() => {}} disabled />
+      <DsChatInput
+        disabled
+        onChange={() => {
+          /* intentional no-op for disabled demo */
+        }}
+        onSend={() => {
+          /* intentional no-op for disabled demo */
+        }}
+        value=""
+      />
     </Wrapper>
   ),
 };
@@ -77,10 +88,10 @@ export const CustomPlaceholder: Story = {
     return (
       <Wrapper>
         <DsChatInput
-          value={value}
           onChange={setValue}
-          onSend={() => alert(`Send: ${value}`)}
+          onSend={() => console.log("Send:", value)}
           placeholder="Ask a question or share feedback…"
+          value={value}
         />
       </Wrapper>
     );
@@ -93,10 +104,10 @@ export const WithButtonProps: Story = {
     return (
       <Wrapper>
         <DsChatInput
-          value={value}
-          onChange={setValue}
-          onSend={() => alert(`Send: ${value}`)}
           buttonProps={{ variant: "outline" }}
+          onChange={setValue}
+          onSend={() => console.log("Send:", value)}
+          value={value}
         />
       </Wrapper>
     );
@@ -109,10 +120,12 @@ export const Loading: Story = {
     return (
       <Wrapper>
         <DsChatInput
-          value={value}
-          onChange={setValue}
-          onSend={() => {}}
           buttonProps={{ loading: true }}
+          onChange={setValue}
+          onSend={() => {
+            /* intentional no-op for loading demo */
+          }}
+          value={value}
         />
       </Wrapper>
     );

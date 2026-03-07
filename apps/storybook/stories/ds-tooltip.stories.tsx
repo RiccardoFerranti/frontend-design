@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { DsTooltip } from "@workspace/design-system";
-import { DsButton } from "@workspace/design-system";
+import { DsButton, DsTooltip } from "@workspace/design-system";
 
 const meta: Meta<typeof DsTooltip> = {
   title: "Design System/DsTooltip",

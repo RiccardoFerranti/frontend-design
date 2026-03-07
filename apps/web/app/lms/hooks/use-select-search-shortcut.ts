@@ -1,8 +1,12 @@
-import { RefObject, useEffect } from "react";
+import { type RefObject, useEffect } from "react";
 
-export function useSelectSearchShortcut(inputRef: RefObject<HTMLInputElement | null>) {
+export function useSelectSearchShortcut(
+  inputRef: RefObject<HTMLInputElement | null>
+) {
   useEffect(() => {
-    if (!inputRef.current) return;
+    if (!inputRef.current) {
+      return;
+    }
 
     const handler = (e: KeyboardEvent) => {
       if ((e.metaKey || e.ctrlKey) && e.key === "k") {

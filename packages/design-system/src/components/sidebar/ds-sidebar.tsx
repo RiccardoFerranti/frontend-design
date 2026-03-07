@@ -1,18 +1,16 @@
 "use client";
 
-import * as React from "react";
 import {
   Sidebar,
   SidebarContent,
-  SidebarHeader,
   SidebarFooter,
-  SidebarTrigger,
-  SidebarProvider,
+  SidebarHeader,
 } from "@workspace/ui/components/sidebar";
+import type { ComponentPropsWithoutRef, ReactNode } from "react";
 
-export type DsSidebarProps = React.ComponentPropsWithoutRef<typeof Sidebar> & {
-  title?: React.ReactNode;
-  footer?: React.ReactNode;
+export type DsSidebarProps = ComponentPropsWithoutRef<typeof Sidebar> & {
+  title?: ReactNode;
+  footer?: ReactNode;
 };
 
 export const DsSidebar = ({
@@ -24,7 +22,7 @@ export const DsSidebar = ({
   return (
     <Sidebar {...props}>
       {title && (
-        <SidebarHeader className="px-3 py-2 text-sm font-semibold">
+        <SidebarHeader className="px-3 py-2 font-semibold text-sm">
           {title}
         </SidebarHeader>
       )}
@@ -37,4 +35,9 @@ export const DsSidebar = ({
 };
 
 DsSidebar.displayName = "DsSidebar";
-export { SidebarProvider, SidebarTrigger };
+
+// biome-ignore lint/performance/noBarrelFile: design-system re-exports for convenience
+export {
+  SidebarProvider,
+  SidebarTrigger,
+} from "@workspace/ui/components/sidebar";

@@ -1,7 +1,7 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
-import { courseTree, NavNode } from "@/lib/mock-data";
+import { courseTree, type NavNode } from "@/lib/mock-data";
 
 /**
  * Recursively finds the path from the root of the tree to the node with the specified targetId.
@@ -12,11 +12,15 @@ import { courseTree, NavNode } from "@/lib/mock-data";
  */
 function findNodePath(tree: NavNode[], targetId: string): NavNode[] | null {
   for (const node of tree) {
-    if (node.id === targetId) return [node];
+    if (node.id === targetId) {
+      return [node];
+    }
 
     if (node.children) {
       const childPath = findNodePath(node.children, targetId);
-      if (childPath) return [node, ...childPath];
+      if (childPath) {
+        return [node, ...childPath];
+      }
     }
   }
 
@@ -29,10 +33,12 @@ export function LessonContentBreadcrumb() {
 
   const path = lessonId ? findNodePath(courseTree, lessonId) : null;
 
-  if (!path) return null;
+  if (!path) {
+    return null;
+  }
 
   return (
-    <div className="text-sm text-muted-foreground">
+    <div className="text-muted-foreground text-sm">
       {path.map((node, i) => (
         <span key={node.id}>
           {node.label}

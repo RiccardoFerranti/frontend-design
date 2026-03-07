@@ -1,21 +1,22 @@
 "use client";
 
-import * as React from "react";
-import { Paperclip, X } from "lucide-react";
 import { cn } from "@workspace/ui/lib/utils";
-import { DsButton, DsButtonProps } from "../button/ds-button";
+import { Paperclip, X } from "lucide-react";
+import type { ComponentPropsWithoutRef } from "react";
+import { useRef, useState } from "react";
+import { DsButton, type DsButtonProps } from "../button/ds-button";
 
-export type DsChatInputProps = {
-  value: string;
+export interface DsChatInputProps {
+  buttonProps?: DsButtonProps;
+  className?: string;
+  disabled?: boolean;
+  onAttach?: (file: File | null) => void;
   onChange: (v: string) => void;
   onSend: () => void;
-  onAttach?: (file: File | null) => void;
   placeholder?: string;
-  disabled?: boolean;
-  className?: string;
-  textareaProps?: React.ComponentPropsWithoutRef<"textarea">;
-  buttonProps?: DsButtonProps;
-};
+  textareaProps?: ComponentPropsWithoutRef<"textarea">;
+  value: string;
+}
 
 const ALLOWED_FILE_TYPES = [
   "application/pdf",
@@ -36,9 +37,9 @@ export function DsChatInput({
   buttonProps,
 }: DsChatInputProps) {
   const canSend = value.trim().length > 0 && !disabled;
-  const fileRef = React.useRef<HTMLInputElement>(null);
-  const [attachment, setAttachment] = React.useState<File | null>(null);
-  const [fileError, setFileError] = React.useState<string | null>(null);
+  const fileRef = useRef<HTMLInputElement>(null);
+  const [attachment, setAttachment] = useState<File | null>(null);
+  const [fileError, setFileError] = useState<string | null>(null);
 
   const handleAttach = (file: File | null) => {
     if (!file) {
@@ -87,40 +88,40 @@ export function DsChatInput({
   return (
     <div
       className={cn(
-        "flex flex-col gap-2 border-t border-border p-3",
-        className,
+        "flex flex-col gap-2 border-border border-t p-3",
+        className
       )}
     >
       <div className="relative">
         <textarea
           {...textareaProps}
-          value={value}
-          onChange={(e) => onChange(e.target.value)}
-          placeholder={placeholder}
-          disabled={disabled}
           className={cn(
             "min-h-[64px] w-full resize-none rounded-lg border border-border bg-background px-3 py-2 pr-8 text-sm outline-none",
             "focus-visible:border-primary focus-visible:ring-2 focus-visible:ring-primary/30",
-            textareaProps?.className,
+            textareaProps?.className
           )}
+          disabled={disabled}
+          onChange={(e) => onChange(e.target.value)}
+          placeholder={placeholder}
+          value={value}
         />
 
         <button
-          type="button"
-          onClick={() => fileRef.current?.click()}
+          aria-label="Attach file"
           className="absolute right-2 bottom-4 text-muted-foreground hover:text-foreground"
           disabled={disabled}
-          aria-label="Attach file"
+          onClick={() => fileRef.current?.click()}
+          type="button"
         >
           <Paperclip className="size-4" />
         </button>
 
         <input
+          accept=".pdf,.png,.jpg,.jpeg,.webp"
+          className="hidden"
+          onChange={(e) => handleAttach(e.target.files?.[0] ?? null)}
           ref={fileRef}
           type="file"
-          className="hidden"
-          accept=".pdf,.png,.jpg,.jpeg,.webp"
-          onChange={(e) => handleAttach(e.target.files?.[0] ?? null)}
         />
       </div>
 
@@ -129,10 +130,10 @@ export function DsChatInput({
           <Paperclip className="size-3 shrink-0 text-muted-foreground" />
           <span className="max-w-[180px] truncate">{attachment.name}</span>
           <button
-            type="button"
-            onClick={handleRemoveAttachment}
-            className="text-muted-foreground hover:text-foreground"
             aria-label="Remove attachment"
+            className="text-muted-foreground hover:text-foreground"
+            onClick={handleRemoveAttachment}
+            type="button"
           >
             <X className="size-3" />
           </button>
@@ -140,14 +141,14 @@ export function DsChatInput({
       ) : null}
 
       {fileError ? (
-        <p className="text-xs text-destructive">{fileError}</p>
+        <p className="text-destructive text-xs">{fileError}</p>
       ) : null}
 
       <div className="flex justify-end">
         <DsButton
-          type="button"
-          onClick={handleSend}
           disabled={!canSend}
+          onClick={handleSend}
+          type="button"
           {...buttonProps}
         >
           Send

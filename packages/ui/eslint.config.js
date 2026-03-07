@@ -1,4 +1,3 @@
-import { config } from "@workspace/eslint-config/react-internal"
-
 /** @type {import("eslint").Linter.Config} */
-export default config
+// biome-ignore lint/performance/noBarrelFile: ESLint config entry point, re-exports shared config
+export { config as default } from "@workspace/eslint-config/react-internal";

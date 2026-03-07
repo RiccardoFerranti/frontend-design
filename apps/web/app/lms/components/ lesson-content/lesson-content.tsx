@@ -1,23 +1,23 @@
-import Image from "next/image";
 import { DsCard } from "@workspace/design-system";
+import Image from "next/image";
 
 import { LessonContentNav } from "./lesson-content-nav";
 
 export function LessonContent() {
   return (
     <DsCard
-      className="bg-transparent ring-0 shadow-none w-full"
+      className="w-full bg-transparent shadow-none ring-0"
       contentProps={{ className: "p-0" }} // remove CardContent padding
     >
       <div className="w-full">
         <div className="relative w-full overflow-hidden px-12">
-          <div className="relative aspect-video mx-auto">
+          <div className="relative mx-auto aspect-video">
             <Image
-              src="/assets/content/content-lesson.png"
               alt="Lesson preview"
-              fill
               className="object-cover"
+              fill
               priority
+              src="/assets/content/content-lesson.png"
             />
           </div>
         </div>

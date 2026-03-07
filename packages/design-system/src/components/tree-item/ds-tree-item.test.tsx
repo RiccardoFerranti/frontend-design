@@ -1,10 +1,9 @@
-import React from "react";
-import { describe, expect, it } from "vitest";
 import { render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-
-import { DsTreeItem } from "./ds-tree-item";
+import type React from "react";
+import { describe, expect, it } from "vitest";
 import type { TreeNode } from "./ds-tree-item";
+import { DsTreeItem } from "./ds-tree-item";
 
 describe("DsTreeItem", () => {
   it("should render without crashing", () => {
@@ -36,7 +35,7 @@ describe("DsTreeItem", () => {
       href: string;
       children: React.ReactNode;
     }) => (
-      <a href={href} data-testid="custom-link">
+      <a data-testid="custom-link" href={href}>
         {children}
       </a>
     );
@@ -65,7 +64,7 @@ describe("DsTreeItem", () => {
       label: "Parent",
       children: [{ id: "2", label: "Child" }],
     };
-    render(<DsTreeItem node={node} defaultOpen />);
+    render(<DsTreeItem defaultOpen node={node} />);
     expect(screen.getByText("Parent")).toBeTruthy();
     expect(screen.getByText("Child")).toBeTruthy();
   });
@@ -76,7 +75,7 @@ describe("DsTreeItem", () => {
       label: "Parent",
       children: [{ id: "2", label: "Child" }],
     };
-    render(<DsTreeItem node={node} defaultOpen={false} />);
+    render(<DsTreeItem defaultOpen={false} node={node} />);
     expect(screen.getByRole("button", { name: "Expand" })).toBeTruthy();
   });
 
@@ -88,17 +87,17 @@ describe("DsTreeItem", () => {
       children: [{ id: "2", label: "Child" }],
     };
     const { container } = render(
-      <DsTreeItem node={node} defaultOpen={false} />,
+      <DsTreeItem defaultOpen={false} node={node} />
     );
     const scope = within(container);
     const expandBtn = container.querySelector(
-      'button[aria-label="Expand"]',
+      'button[aria-label="Expand"]'
     ) as HTMLButtonElement;
     expect(scope.queryByText("Child")).not.toBeInTheDocument();
     await user.click(expandBtn);
     expect(scope.getByText("Child")).toBeTruthy();
     const collapseBtn = container.querySelector(
-      'button[aria-label="Collapse"]',
+      'button[aria-label="Collapse"]'
     ) as HTMLButtonElement;
     expect(collapseBtn).toBeTruthy();
     await user.click(collapseBtn);

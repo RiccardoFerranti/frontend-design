@@ -1,58 +1,58 @@
-import * as React from "react";
-
 import { Input } from "@workspace/ui/components/input";
 import { cn } from "@workspace/ui/lib/utils";
+import type { ComponentPropsWithoutRef, ComponentRef } from "react";
+import { forwardRef, useId } from "react";
 
-export type DsInputProps = React.ComponentPropsWithoutRef<typeof Input> & {
+export type DsInputProps = ComponentPropsWithoutRef<typeof Input> & {
   label?: string;
   helperText?: string;
   error?: string;
 };
 
-export const DsInput = React.forwardRef<
-  React.ComponentRef<typeof Input>,
-  DsInputProps
->(({ className, label, helperText, error, id, ...props }, ref) => {
-  const autoId = React.useId();
-  const inputId = id ?? autoId;
-  const describedById = `${inputId}-desc`;
+export const DsInput = forwardRef<ComponentRef<typeof Input>, DsInputProps>(
+  ({ className, label, helperText, error, id, ...props }, ref) => {
+    const autoId = useId();
+    const inputId = id ?? autoId;
+    const describedById = `${inputId}-desc`;
 
-  const describedBy = error || helperText ? describedById : undefined;
+    const describedBy = error || helperText ? describedById : undefined;
 
-  return (
-    <div className="grid gap-1.5">
-      {label ? (
-        <label htmlFor={inputId} className="text-sm font-medium">
-          {label}
-        </label>
-      ) : null}
+    return (
+      <div className="grid gap-1.5">
+        {label ? (
+          <label className="font-medium text-sm" htmlFor={inputId}>
+            {label}
+          </label>
+        ) : null}
 
-      <Input
-        ref={ref}
-        id={inputId}
-        aria-invalid={Boolean(error) || undefined}
-        aria-describedby={describedBy}
-        className={cn(
-          // Branded focus ring (keeps ui behavior, but makes it “ours”)
-          "focus-visible:ring-primary/30 focus-visible:border-primary",
-          // Error state
-          error ? "border-destructive focus-visible:ring-destructive/30" : "",
-          className,
-        )}
-        {...props}
-      />
+        <Input
+          aria-describedby={describedBy}
+          aria-invalid={Boolean(error) || undefined}
+          className={cn(
+            // Branded focus ring (keeps ui behavior, but makes it “ours”)
+            "focus-visible:border-primary focus-visible:ring-primary/30",
+            // Error state
+            error ? "border-destructive focus-visible:ring-destructive/30" : "",
+            className
+          )}
+          id={inputId}
+          ref={ref}
+          {...props}
+        />
 
-      {error ? (
-        <p id={describedById} className="text-xs text-destructive">
-          {error}
-        </p>
-      ) : helperText ? (
-        <p id={describedById} className="text-xs text-muted-foreground">
-          {helperText}
-        </p>
-      ) : null}
-    </div>
-  );
-});
+        {error ? (
+          <p className="text-destructive text-xs" id={describedById}>
+            {error}
+          </p>
+        ) : null}
+        {!error && helperText ? (
+          <p className="text-muted-foreground text-xs" id={describedById}>
+            {helperText}
+          </p>
+        ) : null}
+      </div>
+    );
+  }
+);
 
 DsInput.displayName = "DsInput";

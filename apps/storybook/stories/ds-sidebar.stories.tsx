@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import type { TreeNode } from "@workspace/design-system";
 import {
   DsSidebar,
   DsTreeItem,
   SidebarProvider,
   SidebarTrigger,
 } from "@workspace/design-system";
-import type { TreeNode } from "@workspace/design-system";
 
 const meta: Meta<typeof DsSidebar> = {
   title: "Design System/DsSidebar",
@@ -50,12 +50,12 @@ export const Default: Story = {
     <div className="flex min-h-[400px] w-full">
       <DsSidebar {...args}>
         <div className="p-2">
-          <DsTreeItem node={navTree} defaultOpen activeId="1-2" />
+          <DsTreeItem activeId="1-2" defaultOpen node={navTree} />
         </div>
       </DsSidebar>
       <main className="flex-1 p-4">
         <SidebarTrigger />
-        <p className="mt-4 text-sm text-muted-foreground">
+        <p className="mt-4 text-muted-foreground text-sm">
           Main content area. Use the trigger to toggle the sidebar.
         </p>
       </main>
@@ -67,13 +67,11 @@ export const WithFooter: Story = {
   render: () => (
     <div className="flex min-h-[400px] w-full">
       <DsSidebar
+        footer={<span className="text-muted-foreground text-xs">v1.0.0</span>}
         title="Course"
-        footer={
-          <span className="text-xs text-muted-foreground">v1.0.0</span>
-        }
       >
         <div className="p-2">
-          <DsTreeItem node={navTree} defaultOpen />
+          <DsTreeItem defaultOpen node={navTree} />
         </div>
       </DsSidebar>
       <main className="flex-1 p-4">
@@ -88,7 +86,7 @@ export const NoTitle: Story = {
     <div className="flex min-h-[400px] w-full">
       <DsSidebar>
         <div className="p-2">
-          <DsTreeItem node={navTree} defaultOpen />
+          <DsTreeItem defaultOpen node={navTree} />
         </div>
       </DsSidebar>
       <main className="flex-1 p-4">
