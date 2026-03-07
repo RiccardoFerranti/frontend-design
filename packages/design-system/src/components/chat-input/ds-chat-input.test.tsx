@@ -68,4 +68,17 @@ describe("DsChatInput", () => {
     const sendButton = within(container).getByRole("button", { name: "Send" });
     expect(sendButton).toHaveClass("custom-send-btn");
   });
+
+  it("should show custom button label when buttonProps.children is provided", () => {
+    const { container } = render(
+      <DsChatInput
+        buttonProps={{ children: "Invia" }}
+        onChange={noop}
+        onSend={noop}
+        value="Hello"
+      />
+    );
+    const sendButton = within(container).getByRole("button", { name: "Invia" });
+    expect(sendButton).toHaveTextContent("Invia");
+  });
 });

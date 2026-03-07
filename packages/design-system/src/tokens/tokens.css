@@ -58,11 +58,16 @@
   --ds-status-new: var(--primary);
 
   --surface-elevated: #2a2d3a;
+  --workspace-background: #eceef3;
 }
 
 /* dark theme (LMS screenshot style) */
 
 .dark {
+  /* brand */
+  --primary: #d60176;
+  --primary-foreground: #ffffff;
+
   /* surfaces */
   --background: #0a0b16; /* center page bg */
   --foreground: #ffffff;
@@ -72,10 +77,6 @@
 
   --popover: #1b1d2a;
   --popover-foreground: #ffffff;
-
-  /* brand */
-  --primary: #d60176;
-  --primary-foreground: #ffffff;
 
   /* helpers */
   --muted: #0c0e1c; /* subtle surface (inputs, muted blocks) */
@@ -111,7 +112,8 @@
   --ds-status-locked: oklch(0.7 0 0);
   --ds-status-new: var(--primary);
 
-  --surface-elevated: #e5e5e7; /* slightly darker than white for light mode */
+  --surface-elevated: #e5e5e7;
+  --workspace-background: #0a0b16;
 }
 
 @theme inline {
@@ -161,4 +163,5 @@
   --color-status-new: var(--ds-status-new);
 
   --color-surface-elevated: var(--surface-elevated);
+  --color-workspace-background: var(--workspace-background);
 }

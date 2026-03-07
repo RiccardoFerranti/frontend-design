@@ -114,6 +114,22 @@ export const WithButtonProps: Story = {
   },
 };
 
+export const CustomButtonLabel: Story = {
+  render: () => {
+    const [value, setValue] = useState("");
+    return (
+      <Wrapper>
+        <DsChatInput
+          buttonProps={{ children: "Invia" }}
+          onChange={setValue}
+          onSend={() => console.log("Send:", value)}
+          value={value}
+        />
+      </Wrapper>
+    );
+  },
+};
+
 export const Loading: Story = {
   render: () => {
     const [value, setValue] = useState("Hello");

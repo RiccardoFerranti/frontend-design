@@ -20,7 +20,7 @@ export function LessonsPanelHandler({ collapsed }: LessonsPanelHandlerProps) {
       type="button"
       variant="ghost"
     >
-      <div className="grid size-6 place-items-center rounded-full bg-background">
+      <div className="grid size-6 place-items-center rounded-full bg-workspace-background">
         {collapsed ? (
           <ChevronsRight className="size-4" />
         ) : (

@@ -10,7 +10,7 @@ export type DsButtonProps = ComponentPropsWithoutRef<typeof Button> & {
 export const DsButton = forwardRef<ComponentRef<typeof Button>, DsButtonProps>(
   (
     { loading, disabled, className, variant = "default", children, ...props },
-    ref
+    ref,
   ) => {
     // The primitive Button in `@workspace/ui` has a hover rule written as `[a]:hover:bg-primary/80`, which only applies
     // when an <a> is inside the button.
@@ -32,7 +32,7 @@ export const DsButton = forwardRef<ComponentRef<typeof Button>, DsButtonProps>(
         {loading ? "Loading..." : children}
       </Button>
     );
-  }
+  },
 );
 
 DsButton.displayName = "DsButton";
