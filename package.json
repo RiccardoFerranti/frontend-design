@@ -9,7 +9,7 @@
     "test": "turbo run test",
     "format": "ultracite fix",
     "format:check": "ultracite check",
-    "build:storybook": "storybook build --config-dir apps/storybook/.storybook"
+    "storybook": "storybook build --config-dir apps/storybook/.storybook --output-dir apps/storybook/storybook-static"
   },
   "devDependencies": {
     "@biomejs/biome": "2.4.5",
