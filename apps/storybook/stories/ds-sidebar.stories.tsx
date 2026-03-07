@@ -59,7 +59,7 @@ const navTree: TreeNode = {
 export const Default: Story = {
   render: (args) => (
     <div className="flex min-h-[400px] w-full">
-      <DsSidebar {...args}>
+      <DsSidebar {...args} collapsible="none">
         <div className="p-2">
           <DsTreeItem activeId="1-2" defaultOpen node={navTree} />
         </div>
@@ -78,6 +78,7 @@ export const WithFooter: Story = {
   render: () => (
     <div className="flex min-h-[400px] w-full">
       <DsSidebar
+        collapsible="none"
         footer={<span className="text-muted-foreground text-xs">v1.0.0</span>}
         title="Course"
       >
@@ -95,7 +96,7 @@ export const WithFooter: Story = {
 export const NoTitle: Story = {
   render: () => (
     <div className="flex min-h-[400px] w-full">
-      <DsSidebar>
+      <DsSidebar collapsible="none">
         <div className="p-2">
           <DsTreeItem defaultOpen node={navTree} />
         </div>
