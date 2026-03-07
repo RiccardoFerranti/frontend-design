@@ -130,6 +130,8 @@ export function DsChatInput({
           <Paperclip className="size-3 shrink-0 text-muted-foreground" />
           <span className="max-w-[180px] truncate">{attachment.name}</span>
           <DsButton
+            size="icon-sm"
+            variant="ghost"
             aria-label="Remove attachment"
             className="text-muted-foreground hover:text-foreground"
             onClick={handleRemoveAttachment}

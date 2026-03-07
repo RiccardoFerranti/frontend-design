@@ -13,6 +13,9 @@ const meta: Meta<typeof DsSidebar> = {
   tags: ["autodocs"],
   parameters: {
     layout: "fullscreen",
+    viewport: {
+      defaultViewport: "desktop",
+    },
   },
   argTypes: {
     title: { control: "text" },

@@ -54,7 +54,7 @@ export const Disabled: Story = {
 
 export const Types: Story = {
   render: (args) => (
-    <div className="flex w-[300px] flex-col gap-4">
+    <div className="flex w-full flex-col gap-4">
       <DsInput {...args} label="Text input" placeholder="Text" type="text" />
       <DsInput {...args} label="Email input" placeholder="Email" type="email" />
       <DsInput

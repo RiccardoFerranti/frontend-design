@@ -2,7 +2,6 @@
 
 import {
   Dialog,
-  DialogClose,
   DialogContent,
   DialogDescription,
   DialogFooter,
@@ -61,9 +60,6 @@ export function DsDialog({
         {children}
 
         {footer ? <DialogFooter>{footer}</DialogFooter> : null}
-
-        {/* keep Close available */}
-        <DialogClose />
       </DialogContent>
     </Dialog>
   );

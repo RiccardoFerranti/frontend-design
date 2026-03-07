@@ -7,9 +7,11 @@ export function LessonContentHeader() {
   return (
     <div className="space-y-2">
       {/* Breadcrumb */}
-      <Suspense fallback={null}>
-        <LessonContentBreadcrumb />
-      </Suspense>
+      <div className="min-h-5">
+        <Suspense fallback={<div className="h-5" />}>
+          <LessonContentBreadcrumb />
+        </Suspense>
+      </div>
 
       {/* Title */}
       <h1 className="font-semibold text-2xl">Dati 1</h1>

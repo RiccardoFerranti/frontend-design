@@ -12,6 +12,7 @@ const meta: Meta<typeof DsDialog> = {
     children: { control: false },
     title: { control: "text" },
     description: { control: "text" },
+    contentClassName: { control: "text" },
   },
   args: {
     title: "Delete lesson?",

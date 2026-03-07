@@ -15,7 +15,7 @@ export function CenterHeader() {
       <div className="relative w-[360px] max-w-[55%]">
         <Search className="pointer-events-none absolute top-1/2 left-3 size-4 -translate-y-1/2 text-muted-foreground" />
         <DsInput
-          className="h-10 w-full rounded-sm border border-border bg-background pr-10 pl-9 text-sm outline-none placeholder:text-muted-foreground focus-visible:ring-2 focus-visible:ring-ring/50"
+          className="h-10 w-full rounded-sm border border-border bg-sidebar! pr-10 pl-9 text-sm outline-none placeholder:text-muted-foreground focus-visible:ring-2 focus-visible:ring-ring/50"
           placeholder="Search in course"
           ref={inputRef}
         />

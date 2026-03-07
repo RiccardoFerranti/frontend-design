@@ -29,11 +29,11 @@ export const DsInput = forwardRef<ComponentRef<typeof Input>, DsInputProps>(
           aria-describedby={describedBy}
           aria-invalid={Boolean(error) || undefined}
           className={cn(
-            // Branded focus ring (keeps ui behavior, but makes it “ours”)
-            "focus-visible:border-primary focus-visible:ring-primary/30",
-            // Error state
-            error ? "border-destructive focus-visible:ring-destructive/30" : "",
-            className
+            "focus-visible:border-primary focus-visible:ring-1 focus-visible:ring-primary/10!",
+            error
+              ? "border-destructive focus-visible:ring-1 focus-visible:ring-destructive/10!"
+              : "",
+            className,
           )}
           id={inputId}
           ref={ref}
@@ -52,7 +52,7 @@ export const DsInput = forwardRef<ComponentRef<typeof Input>, DsInputProps>(
         ) : null}
       </div>
     );
-  }
+  },
 );
 
 DsInput.displayName = "DsInput";
