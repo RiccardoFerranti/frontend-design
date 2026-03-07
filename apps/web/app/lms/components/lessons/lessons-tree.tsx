@@ -16,8 +16,8 @@ export function LessonsTree() {
           activeId={activeId}
           key={node.id}
           node={node}
-          renderLink={({ href, className, children }) => (
-            <Link className={className} href={href}>
+          renderLink={({ href, className, children, title }) => (
+            <Link className={className} href={href} title={title}>
               {children}
             </Link>
           )}

@@ -27,27 +27,34 @@ export interface DsTreeItemProps {
     href: string;
     className?: string;
     children: ReactNode;
+    title?: string;
   }) => ReactNode;
 }
 
-const LABEL_CLASS = "w-[55px] min-w-[55px] max-w-[55px] truncate";
+const LABEL_CLASS = "mr-2 truncate";
 
 function renderLabelContent(
   node: TreeNode,
   renderLink: DsTreeItemProps["renderLink"]
 ): ReactNode {
+  const labelTitle = node.label;
   if (!node.href) {
-    return <div className={LABEL_CLASS}>{node.label}</div>;
+    return (
+      <div className={LABEL_CLASS} title={labelTitle}>
+        {node.label}
+      </div>
+    );
   }
   if (renderLink) {
     return renderLink({
       href: node.href,
       className: LABEL_CLASS,
       children: node.label,
+      title: labelTitle,
     });
   }
   return (
-    <a className={LABEL_CLASS} href={node.href}>
+    <a className={LABEL_CLASS} href={node.href} title={labelTitle}>
       {node.label}
     </a>
   );
@@ -114,7 +121,7 @@ export function DsTreeItem({
 
         <div
           className={cn(
-            "flex w-fit max-w-full shrink-0 items-center rounded-lg px-2 py-2 transition-colors",
+            "flex min-w-0 flex-1 items-center rounded-lg px-2 py-2 transition-colors",
             "hover:bg-accent/40",
             isActive && "bg-accent text-accent-foreground hover:bg-accent",
             node.status && "min-w-[185px]"

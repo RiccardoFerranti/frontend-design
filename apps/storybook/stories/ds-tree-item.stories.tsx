@@ -140,7 +140,7 @@ export const WithRenderLink: Story = {
     <div className="w-[280px] rounded-lg border border-border bg-sidebar p-2">
       <DsTreeItem
         {...args}
-        renderLink={({ href, className, children }) => (
+        renderLink={({ href, className, children, title }) => (
           <a
             className={className}
             href={href}
@@ -148,6 +148,7 @@ export const WithRenderLink: Story = {
               e.preventDefault();
               console.log("Navigate to", href);
             }}
+            title={title}
           >
             {children}
           </a>

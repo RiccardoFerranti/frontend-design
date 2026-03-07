@@ -18,12 +18,20 @@ describe("DsTreeItem", () => {
     expect(screen.getByText("My label")).toBeTruthy();
   });
 
+  it("should set title on label when no href (for tooltip when truncated)", () => {
+    const node: TreeNode = { id: "1", label: "Plain label" };
+    render(<DsTreeItem node={node} />);
+    const label = screen.getByText("Plain label");
+    expect(label).toHaveAttribute("title", "Plain label");
+  });
+
   it("should render as link when href is provided", () => {
     const node: TreeNode = { id: "1", label: "Link item", href: "/path" };
     render(<DsTreeItem node={node} />);
     const link = screen.getByRole("link", { name: "Link item" });
     expect(link).toBeTruthy();
     expect(link).toHaveAttribute("href", "/path");
+    expect(link).toHaveAttribute("title", "Link item");
   });
 
   it("should use renderLink when provided and node has href", () => {
@@ -31,11 +39,13 @@ describe("DsTreeItem", () => {
     const renderLink = ({
       href,
       children,
+      title,
     }: {
       href: string;
       children: React.ReactNode;
+      title?: string;
     }) => (
-      <a data-testid="custom-link" href={href}>
+      <a data-testid="custom-link" href={href} title={title}>
         {children}
       </a>
     );
@@ -44,6 +54,7 @@ describe("DsTreeItem", () => {
     expect(customLink).toBeTruthy();
     expect(customLink).toHaveAttribute("href", "/custom");
     expect(customLink).toHaveTextContent("Custom link");
+    expect(customLink).toHaveAttribute("title", "Custom link");
   });
 
   it("should render status badge when status is provided", () => {
