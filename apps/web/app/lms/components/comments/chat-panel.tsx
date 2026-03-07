@@ -51,7 +51,7 @@ export function ChatPanel({ collapsed, onCollapsedChange }: ChatPanelProps) {
         <div
           className={cn(
             "flex min-h-0 flex-1 flex-col overflow-hidden transition-opacity duration-200",
-            collapsed ? "pointer-events-none opacity-0" : "opacity-100",
+            collapsed ? "pointer-events-none opacity-0" : "opacity-100"
           )}
         >
           {/* Messages area: animates height when Comments expands */}
@@ -115,7 +115,7 @@ export function ChatPanel({ collapsed, onCollapsedChange }: ChatPanelProps) {
                 textareaProps={{
                   className: cn(
                     "bg-transparent transition-[height] duration-400 ease-in-out",
-                    composerExpanded ? "h-44" : "h-16",
+                    composerExpanded ? "h-44" : "h-16"
                   ),
                 }}
                 value={value}

@@ -33,7 +33,7 @@ export const DsInput = forwardRef<ComponentRef<typeof Input>, DsInputProps>(
             error
               ? "border-destructive focus-visible:ring-1 focus-visible:ring-destructive/10!"
               : "",
-            className,
+            className
           )}
           id={inputId}
           ref={ref}
@@ -52,7 +52,7 @@ export const DsInput = forwardRef<ComponentRef<typeof Input>, DsInputProps>(
         ) : null}
       </div>
     );
-  },
+  }
 );
 
 DsInput.displayName = "DsInput";

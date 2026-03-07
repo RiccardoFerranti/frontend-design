@@ -16,6 +16,14 @@ const meta: Meta<typeof DsSidebar> = {
     viewport: {
       defaultViewport: "desktop",
     },
+    docs: {
+      description: {
+        component:
+          "A sidebar component used to navigate the LMS course structure. It supports nested navigation, lesson states, and responsive collapse behavior.",
+        story:
+          "The sidebar is displayed here within a simplified layout for component preview. In the LMS application (`apps/web`) it is integrated into the full page layout where the responsive collapse behavior shifts the content area accordingly.",
+      },
+    },
   },
   argTypes: {
     title: { control: "text" },

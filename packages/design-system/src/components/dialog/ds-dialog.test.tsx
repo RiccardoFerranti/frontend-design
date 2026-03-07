@@ -24,8 +24,8 @@ describe("DsDialog", () => {
     render(
       <DsDialog
         defaultOpen
-        title="Dialog title"
         description="Dialog description text"
+        title="Dialog title"
         trigger={<button type="button">Open</button>}
       >
         <div>Body</div>
@@ -39,8 +39,8 @@ describe("DsDialog", () => {
     render(
       <DsDialog
         defaultOpen
-        title="Dialog title"
         footer={<button type="button">Confirm</button>}
+        title="Dialog title"
         trigger={<button type="button">Open</button>}
       >
         <div>Body</div>

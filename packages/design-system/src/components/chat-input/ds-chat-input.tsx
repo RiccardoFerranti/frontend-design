@@ -89,7 +89,7 @@ export function DsChatInput({
     <div
       className={cn(
         "flex flex-col gap-2 border-border border-t p-3",
-        className,
+        className
       )}
     >
       <div className="relative">
@@ -98,7 +98,7 @@ export function DsChatInput({
           className={cn(
             "min-h-[64px] w-full resize-none rounded-lg border border-border bg-background px-3 py-2 pr-8 text-sm outline-none",
             "focus-visible:border-primary focus-visible:ring-2 focus-visible:ring-primary/30",
-            textareaProps?.className,
+            textareaProps?.className
           )}
           disabled={disabled}
           onChange={(e) => onChange(e.target.value)}
@@ -130,12 +130,12 @@ export function DsChatInput({
           <Paperclip className="size-3 shrink-0 text-muted-foreground" />
           <span className="max-w-[180px] truncate">{attachment.name}</span>
           <DsButton
-            size="icon-sm"
-            variant="ghost"
             aria-label="Remove attachment"
             className="text-muted-foreground hover:text-foreground"
             onClick={handleRemoveAttachment}
+            size="icon-sm"
             type="button"
+            variant="ghost"
           >
             <X className="size-3" />
           </DsButton>
