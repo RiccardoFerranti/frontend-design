@@ -111,7 +111,7 @@ export function DsTreeItem({
               <ChevronDown
                 className={cn(
                   "size-4 transition-transform",
-                  open && "rotate-180",
+                  hasChildren && open && "rotate-180",
                   !hasChildren && "opacity-60"
                 )}
               />

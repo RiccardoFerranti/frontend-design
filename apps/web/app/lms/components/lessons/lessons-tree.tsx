@@ -10,7 +10,7 @@ export function LessonsTree() {
   const activeId = searchParams.get("lesson") ?? "m0-intro-data-video-1";
 
   return (
-    <div className="flex flex-col pr-4">
+    <div className="flex flex-col">
       {courseTree.map((node) => (
         <DsTreeItem
           activeId={activeId}

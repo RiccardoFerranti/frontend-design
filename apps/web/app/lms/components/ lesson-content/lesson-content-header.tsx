@@ -1,4 +1,5 @@
 import { DsBadge, DsProgress } from "@workspace/design-system";
+import { Suspense } from "react";
 
 import { LessonContentBreadcrumb } from "./lesson-content-breadcrumb";
 
@@ -6,7 +7,9 @@ export function LessonContentHeader() {
   return (
     <div className="space-y-2">
       {/* Breadcrumb */}
-      <LessonContentBreadcrumb />
+      <Suspense fallback={null}>
+        <LessonContentBreadcrumb />
+      </Suspense>
 
       {/* Title */}
       <h1 className="font-semibold text-2xl">Dati 1</h1>

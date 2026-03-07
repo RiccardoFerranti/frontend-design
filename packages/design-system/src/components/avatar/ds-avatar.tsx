@@ -7,7 +7,12 @@ import {
   AvatarImage,
 } from "@workspace/ui/components/avatar";
 import { cn } from "@workspace/ui/lib/utils";
-import type { ComponentPropsWithoutRef, ComponentRef, ReactNode } from "react";
+import type {
+  ComponentPropsWithoutRef,
+  ForwardRefExoticComponent,
+  ReactNode,
+  RefAttributes,
+} from "react";
 import { forwardRef } from "react";
 
 export type DsAvatarProps = ComponentPropsWithoutRef<typeof Avatar> & {
@@ -16,6 +21,10 @@ export type DsAvatarProps = ComponentPropsWithoutRef<typeof Avatar> & {
   online?: boolean;
   fallback?: ReactNode;
 };
+
+export type DsAvatarComponent = ForwardRefExoticComponent<
+  DsAvatarProps & RefAttributes<HTMLSpanElement>
+>;
 
 const WHITESPACE_REGEX = /\s+/;
 
@@ -27,7 +36,10 @@ function initials(name?: string) {
   return parts.map((p) => p[0]?.toUpperCase()).join("") || "U";
 }
 
-export const DsAvatar = forwardRef<ComponentRef<typeof Avatar>, DsAvatarProps>(
+export const DsAvatar: DsAvatarComponent = forwardRef<
+  HTMLSpanElement,
+  DsAvatarProps
+>(
   (
     { className, name, src, online, size = "default", fallback, ...props },
     ref

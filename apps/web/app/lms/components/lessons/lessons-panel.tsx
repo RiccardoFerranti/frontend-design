@@ -3,6 +3,7 @@
 import { DsSidebar, SidebarProvider } from "@workspace/design-system";
 import { cn } from "@workspace/ui/lib/utils";
 import Image from "next/image";
+import { Suspense } from "react";
 import { SIDEBAR_COLLAPSED, SIDEBAR_OPEN } from "@/app/lms/components/consts";
 import { LessonsPanelHandler } from "@/app/lms/components/lessons/lessons-panel-handler";
 import { LessonsTree } from "@/app/lms/components/lessons/lessons-tree";
@@ -53,7 +54,9 @@ export function LessonsPanel({
           )}
         >
           <LmsScrollArea className="h-full overflow-hidden">
-            <LessonsTree />
+            <Suspense fallback={null}>
+              <LessonsTree />
+            </Suspense>
           </LmsScrollArea>
         </div>
       </DsSidebar>

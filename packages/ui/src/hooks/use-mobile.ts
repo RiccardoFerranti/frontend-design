@@ -7,12 +7,19 @@ export function useIsMobile() {
 
   useEffect(() => {
     const mql = window.matchMedia(`(max-width: ${MOBILE_BREAKPOINT - 1}px)`);
+
     const onChange = () => {
       setIsMobile(window.innerWidth < MOBILE_BREAKPOINT);
     };
+
     mql.addEventListener("change", onChange);
+
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- initial client-only media query sync is required here
     setIsMobile(window.innerWidth < MOBILE_BREAKPOINT);
-    return () => mql.removeEventListener("change", onChange);
+
+    return () => {
+      mql.removeEventListener("change", onChange);
+    };
   }, []);
 
   return !!isMobile;

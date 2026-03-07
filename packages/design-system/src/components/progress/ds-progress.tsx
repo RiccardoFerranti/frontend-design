@@ -2,7 +2,11 @@
 
 import { Progress } from "@workspace/ui/components/progress";
 import { cn } from "@workspace/ui/lib/utils";
-import type { ComponentPropsWithoutRef, ComponentRef } from "react";
+import type {
+  ComponentPropsWithoutRef,
+  ForwardRefExoticComponent,
+  RefAttributes,
+} from "react";
 import { forwardRef } from "react";
 
 export type DsProgressProps = ComponentPropsWithoutRef<typeof Progress> & {
@@ -10,8 +14,12 @@ export type DsProgressProps = ComponentPropsWithoutRef<typeof Progress> & {
   showValue?: boolean;
 };
 
-export const DsProgress = forwardRef<
-  ComponentRef<typeof Progress>,
+export type DsProgressComponent = ForwardRefExoticComponent<
+  DsProgressProps & RefAttributes<HTMLDivElement>
+>;
+
+export const DsProgress: DsProgressComponent = forwardRef<
+  HTMLDivElement,
   DsProgressProps
 >(({ className, value = 0, label, showValue = true, ...props }, ref) => {
   const pct = Math.max(0, Math.min(100, Number(value) || 0));
