@@ -28,6 +28,15 @@ export type DsAvatarComponent = ForwardRefExoticComponent<
 
 const WHITESPACE_REGEX = /\s+/;
 
+/**
+ * Returns the initials extracted from a name string.
+ * - Splits the name by whitespace and uses up to the first two words.
+ * - Uppercases the first letter of each part.
+ * - Returns "U" if the name is empty or doesn't contain any valid letters.
+ *
+ * @param {string} [name] - The name to extract initials from.
+ * @returns {string} The initials or "U" as fallback.
+ */
 function initials(name?: string) {
   if (!name) {
     return "U";

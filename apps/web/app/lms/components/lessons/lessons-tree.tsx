@@ -7,7 +7,9 @@ import { courseTree } from "@/lib/mock-data";
 
 export function LessonsTree() {
   const searchParams = useSearchParams();
-  const activeId = searchParams.get("lesson") ?? "m0-intro-data-video-1";
+  const activeId =
+    searchParams.get("lesson") ??
+    courseTree[1]?.children?.[0]?.children?.[0]?.id;
 
   return (
     <div className="flex flex-col">

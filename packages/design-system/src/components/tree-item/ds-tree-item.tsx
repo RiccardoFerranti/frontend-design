@@ -33,6 +33,14 @@ export interface DsTreeItemProps {
 
 const LABEL_CLASS = "mr-2 truncate";
 
+/**
+ * Renders the label content for a tree node.
+ * If the node has an href, it renders it as a link (using a custom renderLink if provided),
+ * otherwise displays the label text in a styled div.
+ * @param {TreeNode} node - The tree node whose label to render.
+ * @param {DsTreeItemProps["renderLink"]} renderLink - Optional custom render function for links.
+ * @returns {ReactNode} The rendered node label (as a div, custom link, or anchor).
+ */
 function renderLabelContent(
   node: TreeNode,
   renderLink: DsTreeItemProps["renderLink"]
@@ -60,6 +68,12 @@ function renderLabelContent(
   );
 }
 
+/**
+ * Returns a user-friendly label for the given node status.
+ *
+ * @param {NodeStatus} status - The status of the tree node ("locked", "in-progress", "completed", etc.)
+ * @returns {string} The formatted status label (e.g., "Locked", "In progress", "Completed").
+ */
 function getStatusBadgeLabel(status: NodeStatus): string {
   if (status === "in-progress") {
     return "In progress";

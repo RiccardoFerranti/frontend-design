@@ -141,6 +141,14 @@ All panels use components from the design system.
 - Some loading states use `Suspense` with `fallback={null}` to avoid unnecessary skeleton components.
 - Barrel exports were avoided where required by Ultracite rules.
 
+## Testing
+
+Component tests are implemented for the design system (`packages/design-system`) using Vitest and Testing Library.
+
+These tests verify component rendering and basic interaction behavior.
+
+The LMS application (`apps/web`) primarily composes these components, so the focus of automated tests is on the reusable design system layer.
+
 ### Chat Attachments
 
 The current implementation supports file attachments with basic validation.

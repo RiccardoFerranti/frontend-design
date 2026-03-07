@@ -1,3 +1,9 @@
+/* 
+  Base styles for the design system.
+
+  These ensure tokens are applied when components are rendered
+  outside the application environment (e.g. Storybook).
+*/
 @import "../tokens/index.css";
 
 html,
